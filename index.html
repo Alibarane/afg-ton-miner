@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AFG TON Miner</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1220;color:#fff;font-family:Arial,sans-serif;padding:20px}
+.app{max-width:440px;margin:auto}
+.header{display:flex;align-items:center;gap:12px}
+.logo{background:#2563eb;padding:15px;border-radius:16px;font-size:27px}
+.muted{color:#9ca3af;font-size:14px}
+.card{background:#172235;border:1px solid #28364b;padding:18px;border-radius:18px;margin-top:18px}
+.balance{font-size:34px;color:#fbbf24;font-weight:bold;margin:12px 0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{background:#1e2b40;padding:14px;border-radius:14px;margin-top:12px}
+.stat strong{display:block;margin-top:10px;font-size:19px}
+button{border:0;border-radius:13px;padding:15px;width:100%;font-size:16px;font-weight:bold;cursor:pointer}
+.mine{background:#2563eb;color:white;margin-top:15px}
+.upgrade{background:#26364c;color:white;margin-top:10px}
+.notice{color:#9ca3af;font-size:12px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <div class="logo">⛏️</div>
+    <div><h2 style="margin:0">AFG TON MINER</h2>
+    <p class="muted">ماینینگ تلگرامی</p></div>
+  </div>
+  <div class="card">
+    <div class="muted">موجودی سکه</div>
+    <div class="balance"><span id="balance">0.00</span> AFG</div>
+    <div class="muted">سطح ماینر: <span id="level">1</span></div>
+    <div class="stats">
+      <div class="stat"><span class="muted">قدرت استخراج</span><strong id="power">0.2 TH/s</strong></div>
+      <div class="stat"><span class="muted">پاداش روزانه</span><strong id="daily">5 سکه</strong></div>
+    </div>
+    <button class="mine" id="mine">⛏️ شروع استخراج</button>
+    <button class="upgrade" id="upgrade">⬆️ ارتقای ماینر</button>
+    <p class="notice" id="status">برای شروع، دکمه استخراج را بزن.</p>
+  </div>
+  <p class="notice">نسخه آزمایشی: موجودی فعلاً فقط در همین صفحه محاسبه می‌شود. برداشت واقعی هنوز فعال نیست.</p>
+</div>
+<script>
+const tg=window.Telegram?.WebApp;
+tg?.ready();
+tg?.expand();
+
+let balance=0;
+let level=1;
+let lastMine=0;
+
+const $=id=>document.getElementById(id);
+function render(){
+  $("balance").textContent=balance.toFixed(2);
+  $("level").textContent=level;
+  $("power").textContent=(level===1?0.2:0.4)+" TH/s";
+  $("daily").textContent=(level===1?5:6)+" سکه";
+}
+$("mine").onclick=()=>{
+  const now=Date.now();
+  if(now-lastMine<3000){
+    $("status").textContent="چند لحظه صبر کن و دوباره امتحان کن.";
+    return;
+  }
+  lastMine=now;
+  balance+=level===1?0.01:0.012;
+  render();
+  $("status").textContent="استخراج آزمایشی انجام شد!";
+};
+$("upgrade").onclick=()=>{
+  if(level>=2){
+    $("status").textContent="فعلاً فقط دو سطح در نسخه آزمایشی داریم.";
+    return;
+  }
+  if(balance<10){
+    $("status").textContent="برای آزمایش ارتقا، به 10 سکه نیاز داری.";
+    return;
+  }
+  balance-=10;
+  level=2;
+  render();
+  $("status").textContent="ماینر به سطح 2 ارتقا یافت!";
+};
+render();
+</script>
+</body>
+</html>
