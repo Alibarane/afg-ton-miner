@@ -2,238 +2,332 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#071426">
-  <title>AFG TON Miner</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #eef7ff;
-      background:
-        radial-gradient(circle at top, #123b70 0%, transparent 45%),
-        #071426;
-      min-height: 100vh;
-    }
-
-    .app {
-      width: 100%;
-      max-width: 440px;
-      margin: auto;
-      padding: 18px;
-    }
-
-    .card {
-      background: rgba(17, 42, 73, 0.82);
-      border: 1px solid rgba(70, 170, 255, 0.3);
-      border-radius: 20px;
-      padding: 18px;
-      margin-bottom: 16px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    h1 {
-      color: #54c8ff;
-      font-size: 25px;
-      text-align: center;
-    }
-
-    .balance {
-      font-size: 30px;
-      font-weight: bold;
-      color: #60e7ff;
-      text-align: center;
-    }
-
-    .muted {
-      color: #a6bfd8;
-      font-size: 14px;
-    }
-
-    .button {
-      width: 100%;
-      padding: 14px;
-      border: 0;
-      border-radius: 13px;
-      background: linear-gradient(90deg, #168cff, #27d5f2);
-      color: #041426;
-      font-size: 16px;
-      font-weight: bold;
-      margin-top: 12px;
-      cursor: pointer;
-    }
-
-    .miner {
-      text-align: center;
-      font-size: 54px;
-      margin: 10px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .stat {
-      background: rgba(5, 20, 40, 0.6);
-      padding: 13px;
-      border-radius: 13px;
-    }
-
-    .nav {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .nav button {
-      flex: 1;
-      min-width: 75px;
-      padding: 10px 6px;
-      color: white;
-      background: #17385d;
-      border: 1px solid #285783;
-      border-radius: 12px;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#163e24">
+<title>AFG TON Miner</title>
+<style>
+:root {
+  --bg:#102a1b; --panel:#1b4029; --green:#83df72;
+  --gold:#ffd66b; --text:#f4f8ed; --muted:#b7cdb5;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Tahoma,Arial,sans-serif;font-size:14px;
+}
+button{font:inherit;cursor:pointer}
+.app{max-width:480px;margin:auto;min-height:100vh;padding-bottom:86px;
+background:linear-gradient(180deg,#244b2b,#102a1b 65%)}
+header{padding:18px 16px 10px;display:flex;align-items:center;
+justify-content:space-between}
+.brand{font-size:19px;font-weight:900}
+.brand span{color:var(--green)}
+.pill{background:#284b30;border:1px solid #527451;
+padding:8px 10px;border-radius:20px;font-size:12px}
+.hero{
+ margin:10px 12px 16px;border-radius:22px;overflow:hidden;
+ position:relative;min-height:225px;
+ background:linear-gradient(#8bcf99 0%,#b8dc93 36%,#477e3f 37%,#285631 70%,#193e28 100%);
+ border:1px solid #507950;
+}
+.sun{position:absolute;top:23px;left:35px;width:40px;height:40px;
+border-radius:50%;background:#fff1a3;box-shadow:0 0 28px #fff3a0}
+.mountain{position:absolute;bottom:70px;width:0;height:0;
+border-left:145px solid transparent;border-right:145px solid transparent;
+border-bottom:140px solid #527e48}
+.m1{right:-48px}.m2{left:-85px;border-bottom-color:#386a3e;
+border-left-width:180px;border-right-width:180px}
+.m3{right:90px;bottom:50px;border-bottom-color:#285737;
+border-left-width:100px;border-right-width:100px;border-bottom-width:95px}
+.ground{position:absolute;bottom:0;width:100%;height:80px;
+background:linear-gradient(#386a36,#193f29)}
+.mine-entrance{position:absolute;bottom:35px;left:50%;
+transform:translateX(-50%);width:110px;height:65px;
+border-radius:55px 55px 0 0;background:#18261b;
+border:5px solid #795d39;box-shadow:inset 0 0 20px #000}
+.mine-entrance:after{content:"⛏️";position:absolute;font-size:34px;
+left:32px;top:10px}
+.worker{position:absolute;bottom:23px;right:23px;font-size:55px;
+filter:drop-shadow(0 5px 4px #142b18)}
+.crystal{position:absolute;bottom:17px;left:25px;font-size:32px}
+.hero-caption{position:absolute;top:14px;right:15px;
+color:#163922;font-weight:900;text-shadow:0 1px #d5f2bd}
+.hero-caption small{display:block;margin-top:6px;font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+padding:0 12px;margin-bottom:16px}
+.stat{background:var(--panel);border:1px solid #345d3a;
+border-radius:14px;padding:12px 6px;text-align:center}
+.stat .icon{font-size:21px}
+.stat strong{display:block;margin:7px 0 4px;color:var(--gold);font-size:16px}
+.stat small{color:var(--muted);font-size:11px}
+.page{padding:0 12px}
+.heading{display:flex;justify-content:space-between;align-items:center;
+margin:18px 2px 10px}
+.heading h2{font-size:17px;margin:0}
+.muted{color:var(--muted);font-size:12px}
+.card{background:linear-gradient(145deg,#244b30,#193b27);
+border:1px solid #3c6642;border-radius:18px;padding:15px;margin-bottom:12px}
+.miner-art{height:145px;border-radius:14px;
+background:radial-gradient(ellipse at 50% 90%,#477c3d,#244b30 62%,#183522);
+display:flex;align-items:center;justify-content:center;
+font-size:76px;position:relative;overflow:hidden}
+.miner-art:after{content:"";position:absolute;bottom:15px;
+width:120px;height:13px;border-radius:50%;background:#132a1c}
+.miner-art span{position:relative;z-index:1;filter:drop-shadow(0 6px 4px #102a1b)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.miner-title{font-size:17px;font-weight:bold;margin:14px 0 6px}
+.btn{border:0;border-radius:12px;padding:12px 15px;font-weight:bold}
+.btn-primary{background:var(--green);color:#17351e}
+.btn-secondary{background:#355d3b;color:white;border:1px solid #527c50}
+.btn-gold{background:var(--gold);color:#30260b}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.full{width:100%;margin-top:10px}
+.progress{height:8px;border-radius:9px;background:#102a1b;overflow:hidden;margin:12px 0}
+.progress div{height:100%;background:var(--green);width:0}
+.level-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.level-card{background:#203f2a;border:1px solid #3a6341;
+border-radius:15px;padding:12px;min-width:0}
+.level-image{height:85px;border-radius:10px;
+display:flex;align-items:center;justify-content:center;font-size:43px;
+background:linear-gradient(145deg,#386c40,#142e1d);margin-bottom:10px}
+.level-card strong{display:block;margin:5px 0}
+.level-card small{color:var(--muted);display:block;line-height:1.8}
+.level-card button{width:100%;margin-top:10px;padding:10px 5px;font-size:12px}
+.task{display:flex;gap:10px;align-items:center;padding:12px 0;
+border-bottom:1px solid #36583b}
+.task:last-child{border-bottom:0}
+.task-icon{font-size:26px;width:40px;text-align:center}
+.task-info{flex:1;min-width:0}
+.task-info strong{display:block;margin-bottom:5px}
+.task button{padding:9px;font-size:12px}
+.wallet-icon{font-size:50px;text-align:center;padding:12px}
+.hidden{display:none!important}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+width:100%;max-width:480px;display:grid;grid-template-columns:repeat(4,1fr);
+background:#102719;border-top:1px solid #3a5a3c;
+padding:8px 5px max(8px,env(safe-area-inset-bottom));z-index:10}
+nav button{background:none;border:0;color:#b8cbb8;font-size:11px;padding:6px 0}
+nav button span{display:block;font-size:22px;margin-bottom:4px}
+nav button.active{color:var(--green)}
+.notice{font-size:11px;color:var(--muted);line-height:1.8;margin:12px 2px}
+</style>
 </head>
 <body>
-  <main class="app">
-    <h1>⚡ AFG TON Miner</h1>
-    <p class="muted" style="text-align:center">
-      ماینر دیجیتالی خود را ارتقا بده
-    </p>
+<div class="app">
+<header>
+ <div class="brand">⛏️ AFG <span>TON MINER</span></div>
+ <div class="pill">🟢 نسخه آزمایشی</div>
+</header>
 
-    <section class="card">
-      <div class="miner">⛏️</div>
-      <p class="muted" style="text-align:center">موجودی شما</p>
-      <div class="balance" id="balance">0 AFG</div>
-      <button class="button" onclick="claim()">دریافت پاداش آزمایشی</button>
-    </section>
+<section class="hero">
+ <div class="sun"></div>
+ <div class="mountain m1"></div>
+ <div class="mountain m2"></div>
+ <div class="mountain m3"></div>
+ <div class="ground"></div>
+ <div class="mine-entrance"></div>
+ <div class="worker">👷</div>
+ <div class="crystal">💎</div>
+ <div class="hero-caption">معدن خودت را بساز!
+  <small>استخراج کن، ارتقا بده، پیشرفت کن</small>
+ </div>
+</section>
 
-    <section class="card">
-      <h2>ماینر من</h2>
-      <div class="stats">
-        <div class="stat">
-          <div class="muted">سطح ماینر</div>
-          <strong id="level">سطح ۱</strong>
-        </div>
-        <div class="stat">
-          <div class="muted">قدرت ماین</div>
-          <strong id="power">0.2 TH/s</strong>
-        </div>
-        <div class="stat">
-          <div class="muted">پاداش روزانه</div>
-          <strong id="daily">5 AFG</strong>
-        </div>
-        <div class="stat">
-          <div class="muted">هزینه ارتقا</div>
-          <strong id="cost">50 AFG</strong>
-        </div>
-      </div>
-      <button class="button" onclick="upgrade()">ارتقای ماینر</button>
-      <p class="muted" id="message">برای شروع آماده‌ای!</p>
-    </section>
+<section class="stats">
+ <div class="stat"><div class="icon">🪙</div>
+  <strong id="coins">100</strong><small>موجودی سکه</small></div>
+ <div class="stat"><div class="icon">⚡</div>
+  <strong id="power">0.2</strong><small>قدرت TH/s</small></div>
+ <div class="stat"><div class="icon">⛏️</div>
+  <strong id="level">1</strong><small>سطح ماینر</small></div>
+</section>
 
-    <section class="card">
-      <h2>بخش‌های مینی‌اپ</h2>
-      <div class="nav">
-        <button onclick="showPage('home')">خانه</button>
-        <button onclick="showPage('wallet')">کیف پول</button>
-        <button onclick="showPage('tasks')">وظایف</button>
-        <button onclick="showPage('profile')">پروفایل</button>
-      </div>
-    </section>
+<main class="page">
+<section id="home">
+ <div class="heading"><h2>🏡 خانه معدن</h2><span class="muted">خوش آمدی، معدن‌کار!</span></div>
+ <div class="card">
+  <div class="row"><strong>درآمد استخراج</strong><span id="daily">5 سکه / روز</span></div>
+  <div class="progress"><div id="progress"></div></div>
+  <div class="row"><span class="muted">سکه جمع‌شده از آخرین برداشت</span>
+   <strong id="earned">0</strong></div>
+  <button class="btn btn-primary full" onclick="collect()">🪙 دریافت سکه‌های استخراج‌شده</button>
+ </div>
+ <div class="card">
+  <div class="row"><div><strong>ماینر فعال من</strong>
+   <div class="muted" id="homeLevel">سطح ۱</div></div><span style="font-size:42px">⛏️</span></div>
+  <div class="muted" style="line-height:2;margin-top:8px">ماینرت را ارتقا بده تا قدرت و درآمدت افزایش یابد.</div>
+  <button class="btn btn-secondary full" onclick="showPage('miner')">مشاهده سطوح ماینر ←</button>
+ </div>
+</section>
 
-    <section class="card hidden" id="wallet">
-      <h2>کیف پول</h2>
-      <p>این نسخه هنوز به کیف پول واقعی TON متصل نیست.</p>
-    </section>
+<section id="miner" class="hidden">
+ <div class="heading"><h2>⛏️ معدن و ارتقا</h2><span class="muted">۱ تا ۱۰۰</span></div>
+ <div class="card">
+  <div class="miner-art"><span>👷‍♂️⛏️</span></div>
+  <div class="miner-title" id="minerTitle">ماینر سطح ۱</div>
+  <div class="row"><span class="muted">قدرت استخراج</span><strong id="minerPower">0.2 TH/s</strong></div>
+  <div class="row" style="margin-top:12px"><span class="muted">درآمد روزانه</span><strong id="minerIncome">5 سکه</strong></div>
+  <div class="row" style="margin-top:12px"><span class="muted">هزینه ارتقای بعدی</span><strong id="nextCost">100 سکه</strong></div>
+  <button class="btn btn-primary full" id="upgradeBtn" onclick="upgrade()">⬆️ ارتقای ماینر</button>
+ </div>
+ <div class="heading"><h2>سطوح ماینر</h2></div>
+ <div class="level-grid" id="levelsGrid"></div>
+ <p class="notice">هزینه‌ها و درآمدها در این نسخه آزمایشی محاسبات نمایشی‌اند و بعداً می‌توانیم با اقتصاد نهایی بازی تنظیم‌شان کنیم.</p>
+</section>
 
-    <section class="card hidden" id="tasks">
-      <h2>وظایف</h2>
-      <p>بخش وظایف در نسخه آزمایشی است.</p>
-    </section>
+<section id="tasks" class="hidden">
+ <div class="heading"><h2>👥 تیم و وظایف</h2></div>
+ <div class="card">
+  <div class="row"><div><strong>تیم معدن‌کاران</strong>
+   <div class="muted" style="margin-top:6px">دوستانت را دعوت کن</div></div><span style="font-size:35px">👥</span></div>
+  <button class="btn btn-secondary full" onclick="invite()">🔗 کپی متن دعوت</button>
+ </div>
+ <div class="card">
+  <div class="heading"><h2>📋 وظایف روزانه</h2></div>
+  <div class="task"><div class="task-icon">⛏️</div><div class="task-info">
+   <strong>بررسی معدن</strong><small class="muted">پاداش: 2 سکه</small></div>
+   <button class="btn btn-primary" id="task1" onclick="claimTask(1)">دریافت</button></div>
+  <div class="task"><div class="task-icon">💎</div><div class="task-info">
+   <strong>بازدید از ماینر</strong><small class="muted">پاداش: 3 سکه</small></div>
+   <button class="btn btn-primary" id="task2" onclick="claimTask(2)">دریافت</button></div>
+  <div class="task"><div class="task-icon">🌱</div><div class="task-info">
+   <strong>مراقبت از معدن</strong><small class="muted">پاداش: 5 سکه</small></div>
+   <button class="btn btn-primary" id="task3" onclick="claimTask(3)">دریافت</button></div>
+ </div>
+ <p class="notice">پاداش‌های این وظایف آزمایشی‌اند؛ برای جلوگیری از تقلب، نسخه نهایی باید از سرور استفاده کند.</p>
+</section>
 
-    <section class="card hidden" id="profile">
-      <h2>پروفایل کاربر</h2>
-      <p>کاربر AFG TON Miner</p>
-    </section>
-  </main>
+<section id="wallet" class="hidden">
+ <div class="heading"><h2>💎 کیف پول</h2></div>
+ <div class="card">
+  <div class="wallet-icon">💎</div>
+  <div style="text-align:center"><strong>کیف پول TON</strong>
+   <p class="muted">اتصال واقعی هنوز راه‌اندازی نشده است.</p></div>
+  <button class="btn btn-primary full" onclick="walletInfo()">اتصال کیف پول TON</button>
+ </div>
+ <div class="card">
+  <strong>موجودی داخل بازی</strong>
+  <div style="font-size:28px;color:var(--gold);margin:14px 0"><span id="walletCoins">100</span> 🪙</div>
+  <p class="muted">سکه‌های بازی در این نسخه قابل تبدیل یا برداشت نیستند.</p>
+ </div>
+</section>
+</main>
 
-  <script>
-    let balance = Number(localStorage.getItem("afgBalance")) || 0;
-    let level = Number(localStorage.getItem("afgLevel")) || 1;
+<nav>
+ <button class="active" data-page="home" onclick="showPage('home')"><span>🏡</span>خانه</button>
+ <button data-page="miner" onclick="showPage('miner')"><span>⛏️</span>ماینر</button>
+ <button data-page="tasks" onclick="showPage('tasks')"><span>👥</span>تیم و وظایف</button>
+ <button data-page="wallet" onclick="showPage('wallet')"><span>💎</span>کیف پول</button>
+</nav>
+</div>
 
-    function update() {
-      document.getElementById("balance").textContent =
-        balance + " AFG";
+<script>
+const KEY = "afgTonMinerDemoV1";
+let state;
+try { state = JSON.parse(localStorage.getItem(KEY)); } catch(e) {}
+if (!state || typeof state.coins !== "number") {
+ state = {coins:100, level:1, last:Date.now(), tasks:[], dailyKey:""};
+}
+state.level = Math.max(1, Math.min(100, Number(state.level)||1));
 
-      document.getElementById("level").textContent =
-        "سطح " + (level === 1 ? "۱" : "۲");
-
-      document.getElementById("power").textContent =
-        level === 1 ? "0.2 TH/s" : "0.4 TH/s";
-
-      document.getElementById("daily").textContent =
-        level === 1 ? "5 AFG" : "6 AFG";
-
-      document.getElementById("cost").textContent =
-        level === 1 ? "50 AFG" : "حداکثر سطح";
-
-      localStorage.setItem("afgBalance", balance);
-      localStorage.setItem("afgLevel", level);
-    }
-
-    function claim() {
-      balance += level === 1 ? 5 : 6;
-      document.getElementById("message").textContent =
-        "پاداش آزمایشی اضافه شد.";
-      update();
-    }
-
-    function upgrade() {
-      if (level >= 2) {
-        document.getElementById("message").textContent =
-          "فعلاً سطح بالاتری وجود ندارد.";
-        return;
-      }
-
-      if (balance < 50) {
-        document.getElementById("message").textContent =
-          "برای ارتقا به 50 AFG آزمایشی نیاز داری.";
-        return;
-      }
-
-      balance -= 50;
-      level = 2;
-
-      document.getElementById("message").textContent =
-        "ماینر به سطح ۲ ارتقا یافت!";
-      update();
-    }
-
-    function showPage(page) {
-      ["wallet", "tasks", "profile"].forEach(id => {
-        document.getElementById(id).classList.add("hidden");
-      });
-
-      if (page !== "home") {
-        document.getElementById(page).classList.remove("hidden");
-      }
-    }
-
-    update();
-  </script>
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function fmt(n){return Math.floor(n).toLocaleString("en-US")}
+function power(l){return (0.2*l).toFixed(1)}
+function income(l){
+ if(l===1)return 5;
+ if(l===2)return 6;
+ return Math.round(6*Math.pow(800/6,(l-2)/98));
+}
+function cost(l){
+ if(l===2)return 100;
+ if(l===3)return 120;
+ if(l>=4)return Math.round(120+7880*Math.pow((l-3)/97,1.5));
+ return 0;
+}
+function accrued(){
+ return Math.max(0,(Date.now()-state.last)/86400000*income(state.level));
+}
+function collect(){
+ const amount=accrued();
+ if(amount<0.01){alert("هنوز سکه کافی استخراج نشده است. کمی بعد دوباره امتحان کن.");return}
+ state.coins+=amount;state.last=Date.now();save();render();
+ alert("سکه‌های استخراج‌شده به موجودی آزمایشی اضافه شد!");
+}
+function upgrade(){
+ if(state.level>=100){alert("به بالاترین سطح رسیدی!");return}
+ const c=cost(state.level+1);
+ if(state.coins<c){alert("برای ارتقا به "+(state.level+1)+" به "+fmt(c)+" سکه نیاز داری.");return}
+ state.coins-=c;state.level++;save();render();
+ alert("ماینر به سطح "+state.level+" ارتقا یافت!");
+}
+function showPage(id){
+ document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));
+ document.getElementById(id).classList.remove("hidden");
+ document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+ if(id==="miner")renderLevels();
+}
+function renderLevels(){
+ const grid=document.getElementById("levelsGrid");grid.innerHTML="";
+ const start=Math.max(1,Math.min(99,state.level)-1);
+ const end=Math.min(100,Math.max(4,state.level+3));
+ for(let l=start;l<=end;l++){
+  const card=document.createElement("div");card.className="level-card";
+  const c=cost(l);
+  let status=l===state.level?"فعال":l<state.level?"باز شده":"قفل";
+  card.innerHTML=`<div class="level-image">${l<=3?"⛏️":"💎"}</div>
+   <strong>ماینر سطح ${l}</strong>
+   <small>قدرت: ${power(l)} TH/s</small>
+   <small>درآمد: ${income(l)} سکه/روز</small>
+   <small>${status}</small>
+   <button class="btn ${l===state.level?"btn-secondary":"btn-primary"}"
+   ${l!==state.level+1?"disabled":""} onclick="upgrade()"> ${l===state.level?"سطح فعلی":l<state.level?"باز شده":fmt(c)+" 🪙"} </button>`;
+  grid.appendChild(card);
+ }
+}
+function claimTask(n){
+ const today=new Date().toISOString().slice(0,10);
+ if(state.dailyKey!==today){state.dailyKey=today;state.tasks=[]}
+ if(state.tasks.includes(n)){alert("این وظیفه امروز انجام شده است.");return}
+ state.tasks.push(n);state.coins += [0,2,3,5][n];save();render();
+ alert("پاداش آزمایشی دریافت شد!");
+}
+function invite(){
+ const text="به AFG TON Miner بپیوند و معدن خودت را بساز!";
+ if(navigator.clipboard && navigator.clipboard.writeText){
+  navigator.clipboard.writeText(text).then(()=>alert("متن دعوت کپی شد. لینک دعوت واقعی بعداً اضافه می‌شود."))
+  .catch(()=>alert(text));
+ }else alert(text);
+}
+function walletInfo(){
+ alert("این فقط صفحه آزمایشی است. اتصال امن کیف پول TON باید در مرحله بعد اضافه شود. عبارت بازیابی یا کلید خصوصی خود را وارد نکن.");
+}
+function render(){
+ const e=accrued();
+ document.getElementById("coins").textContent=fmt(state.coins);
+ document.getElementById("power").textContent=power(state.level);
+ document.getElementById("level").textContent=state.level;
+ document.getElementById("daily").textContent=income(state.level)+" سکه / روز";
+ document.getElementById("earned").textContent=e.toFixed(3);
+ document.getElementById("progress").style.width=Math.min(100,e/income(state.level)*100)+"%";
+ document.getElementById("homeLevel").textContent="سطح "+state.level;
+ document.getElementById("minerTitle").textContent="ماینر سطح "+state.level;
+ document.getElementById("minerPower").textContent=power(state.level)+" TH/s";
+ document.getElementById("minerIncome").textContent=income(state.level)+" سکه";
+ document.getElementById("nextCost").textContent=state.level===100?"حداکثر سطح":fmt(cost(state.level+1))+" سکه";
+ document.getElementById("upgradeBtn").disabled=state.level>=100||state.coins<cost(state.level+1);
+ document.getElementById("walletCoins").textContent=fmt(state.coins);
+ const today=new Date().toISOString().slice(0,10);
+ if(state.dailyKey!==today){state.dailyKey=today;state.tasks=[];save()}
+ [1,2,3].forEach(n=>{
+  const b=document.getElementById("task"+n);
+  b.textContent=state.tasks.includes(n)?"انجام شد":"دریافت";
+  b.disabled=state.tasks.includes(n);
+ });
+ if(!document.getElementById("miner").classList.contains("hidden"))renderLevels();
+}
+render();
+setInterval(render,5000);
+</script>
 </body>
 </html>
