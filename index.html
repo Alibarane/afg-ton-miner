@@ -313,17 +313,41 @@ function showPage(id){
  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
  if(id==='miner')renderLevels();
 }
+
 function renderLevels(){
- const g=document.getElementById('levelsGrid');g.innerHTML='';
- const start=Math.max(1,Math.min(99,state.level)-1);
- const end=Math.min(100,Math.max(4,state.level+3));
- for(let l=start;l<=end;l++){
-  const c=document.createElement('div');c.className='level-card';
+ const g=document.getElementById('levelsGrid');
+ g.innerHTML='';
+
+ for(let l=1;l<=100;l++){
+  const c=document.createElement('div');
+  c.className='level-card';
+
   const price=cost(l);
-  const status=l===state.level?'فعال':l<state.level?'باز شده':'قفل';
-  c.innerHTML=`<div class="level-image">${l<=3?'⛏️':'💎'}</div><strong>ماینر سطح ${l}</strong><small>قدرت: ${power(l)} TH/s</small><small>درآمد: ${income(l)} سکه/روز</small><small>${status}</small><button class="btn ${l===state.level?'secondary':'primary'}" ${l!==state.level+1?'disabled':''} onclick="upgrade()">${l===state.level?'سطح فعلی':l<state.level?'باز شده':fmt(price)+' 🪙'}</button>`;
+  const status=
+   l===state.level?'فعال':
+   l<state.level?'باز شده':'قفل';
+
+  c.innerHTML=`
+   <div class="level-image">
+    ${l<=3?'⛏️':'💎'}
+   </div>
+   <strong>ماینر سطح ${l}</strong>
+   <small>قدرت: ${power(l)} TH/s</small>
+   <small>درآمد: ${income(l)} سکه/روز</small>
+   <small>${status}</small>
+   <button
+    class="btn ${l===state.level?'secondary':'primary'}"
+    ${l!==state.level+1?'disabled':''}
+    onclick="upgrade()">
+    ${l===state.level?'سطح فعلی':
+      l<state.level?'باز شده':fmt(price)+' 🪙'}
+   </button>
+  `;
+
   g.appendChild(c);
  }
+}
+
 }
 function claimTask(n){
  const today=new Date().toISOString().slice(0,10);
