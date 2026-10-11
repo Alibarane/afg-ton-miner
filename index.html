@@ -1,91 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d6b42">
 <title>AFG TON Miner</title>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#0b1220;color:#fff;font-family:Arial,sans-serif;padding:20px}
-.app{max-width:440px;margin:auto}
-.header{display:flex;align-items:center;gap:12px}
-.logo{background:#2563eb;padding:15px;border-radius:16px;font-size:27px}
-.muted{color:#9ca3af;font-size:14px}
-.card{background:#172235;border:1px solid #28364b;padding:18px;border-radius:18px;margin-top:18px}
-.balance{font-size:34px;color:#fbbf24;font-weight:bold;margin:12px 0}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.stat{background:#1e2b40;padding:14px;border-radius:14px;margin-top:12px}
-.stat strong{display:block;margin-top:10px;font-size:19px}
-button{border:0;border-radius:13px;padding:15px;width:100%;font-size:16px;font-weight:bold;cursor:pointer}
-.mine{background:#2563eb;color:white;margin-top:15px}
-.upgrade{background:#26364c;color:white;margin-top:10px}
-.notice{color:#9ca3af;font-size:12px;line-height:1.8}
+:root{--bg:#eff9ef;--card:#fffdf4;--green:#13834f;--green2:#21a663;--dark:#123d2b;--muted:#6d8777;--lime:#c7f36a;--gold:#ffc95c;--line:#d8ead8;--shadow:0 8px 24px #154d2910}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Tahoma,Arial,sans-serif;color:var(--dark);padding-bottom:88px}.app{max-width:520px;margin:auto;min-height:100vh;background:linear-gradient(180deg,#dff6d9 0,#eff9ef 260px)}button{font:inherit;cursor:pointer;border:0}.top{padding:22px 18px 18px;background:linear-gradient(135deg,#087443,#1ca663);color:white;border-radius:0 0 28px 28px;position:relative;overflow:hidden}.top:after{content:'âœ¦';position:absolute;left:20px;top:12px;font-size:48px;color:#ffffff22}.brand{display:flex;align-items:center;gap:10px}.logo{width:46px;height:46px;border-radius:16px;background:#c8f36b;color:#145331;display:grid;place-items:center;font-size:26px;box-shadow:0 5px 0 #07532e}.brand h1{font-size:18px;margin:0;font-weight:900;letter-spacing:.3px}.brand small{display:block;color:#d6f7df;font-size:11px;margin-top:4px}.hello{margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:10px}.hello h2{margin:0 0 5px;font-size:21px}.hello p{margin:0;color:#d9f6df;font-size:12px}.mascot{font-size:52px;filter:drop-shadow(0 5px 0 #07532e55);transform:rotate(-5deg)}main{padding:16px}.page{display:none;animation:show .2s ease}.page.active{display:block}@keyframes show{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}.section-title{display:flex;align-items:center;justify-content:space-between;margin:6px 2px 12px}.section-title h3{font-size:16px;margin:0}.section-title span{font-size:11px;color:var(--muted)}.balance-card{background:linear-gradient(135deg,#fffef6,#f4ffd9);border:1px solid #d9edb9;border-radius:22px;padding:17px;box-shadow:var(--shadow);position:relative;overflow:hidden}.balance-card:after{content:'ًںھ™';position:absolute;left:12px;bottom:0;font-size:68px;opacity:.16;transform:rotate(-15deg)}.eyebrow{font-size:12px;color:var(--muted)}.balance-line{display:flex;align-items:baseline;gap:7px;margin:8px 0}.balance{font-size:31px;font-weight:900;color:#0c7745}.ticker{background:#d8f7b1;border-radius:9px;padding:5px 8px;font-size:11px;font-weight:bold}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.stat{background:#fff;border:1px solid var(--line);border-radius:17px;padding:13px;box-shadow:var(--shadow)}.stat .emoji{font-size:23px}.stat small{display:block;color:var(--muted);font-size:11px;margin:7px 0 5px}.stat strong{font-size:17px}.stat em{font-style:normal;font-size:10px;color:var(--muted)}.miner-card{margin-top:14px;background:linear-gradient(135deg,#176c42,#23995b);border-radius:22px;padding:16px;color:white;box-shadow:0 9px 22px #16734525;position:relative;overflow:hidden}.miner-card:after{content:'â›ڈï¸ڈ';position:absolute;left:7px;top:15px;font-size:55px;opacity:.8;transform:rotate(-15deg)}.miner-top{display:flex;justify-content:space-between;align-items:center;gap:8px}.level-tag{background:#c9f46c;color:#1a5c35;padding:6px 9px;border-radius:9px;font-size:11px;font-weight:bold}.miner-card h3{margin:12px 0 5px;font-size:18px}.miner-card p{font-size:12px;color:#d6f5df;margin:0 0 14px}.progress{height:8px;background:#ffffff2e;border-radius:9px;overflow:hidden;margin:8px 0 15px}.progress div{height:100%;width:38%;background:#cbf66b;border-radius:9px}.btn{border-radius:14px;padding:13px 15px;font-weight:bold;display:inline-flex;justify-content:center;align-items:center;gap:7px;transition:transform .15s}.btn:active{transform:scale(.98)}.btn-primary{background:var(--lime);color:#154a2c;box-shadow:0 4px 0 #91c83f}.btn-green{background:var(--green);color:white;box-shadow:0 4px 0 #075a35}.btn-light{background:#e5f7e2;color:#17613b;border:1px solid #c9e8c8}.btn-block{width:100%}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow);text-align:right;color:var(--dark);width:100%}.tile .tile-emoji{font-size:26px;display:block;margin-bottom:8px}.tile strong{display:block;font-size:13px}.tile small{display:block;color:var(--muted);font-size:11px;margin-top:5px;line-height:1.6}.tile:active{transform:scale(.98)}.subnav{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none}.subnav button{white-space:nowrap;border-radius:12px;background:#fff;border:1px solid var(--line);color:#4c6c57;padding:9px 12px;font-size:12px}.subnav button.selected{background:#d7f4ad;color:#185a34;border-color:#b7e27c;font-weight:bold}.level-card{background:#fffdf4;border:1px solid var(--line);border-radius:20px;padding:15px;margin-bottom:11px;box-shadow:var(--shadow)}.level-head{display:flex;align-items:center;gap:12px}.machine{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:17px;background:#e2f8d5;font-size:30px}.level-head h4{margin:0 0 5px;font-size:15px}.level-head p{margin:0;color:var(--muted);font-size:11px}.level-values{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:13px 0}.value-box{background:#f0f9e9;border-radius:12px;padding:10px}.value-box small{display:block;font-size:10px;color:var(--muted);margin-bottom:5px}.value-box b{font-size:14px}.cost{color:#ad7620}.mission{display:flex;align-items:center;gap:12px;background:#fffdf4;border:1px solid var(--line);padding:13px;border-radius:16px;margin-bottom:10px}.mission-icon{width:45px;height:45px;border-radius:14px;background:#e3f8d9;display:grid;place-items:center;font-size:23px;flex-shrink:0}.mission-info{flex:1}.mission-info strong{font-size:12px;display:block}.mission-info small{font-size:10px;color:var(--muted);display:block;margin-top:5px}.reward{font-size:11px;font-weight:bold;color:#137c49;white-space:nowrap}.wallet-panel{background:#fffdf4;border:1px solid var(--line);border-radius:20px;padding:17px;box-shadow:var(--shadow);margin-bottom:12px}.wallet-icon{font-size:38px;text-align:center;margin:6px}.wallet-panel h3{text-align:center;margin:5px 0 8px}.wallet-panel p{text-align:center;font-size:12px;color:var(--muted);line-height:1.8}.notice{background:#fff4cf;border:1px solid #f1d98e;color:#75581a;border-radius:14px;padding:12px;font-size:11px;line-height:1.8;margin-top:12px}.profile-head{display:flex;align-items:center;gap:13px;padding:16px;background:#fffdf4;border:1px solid var(--line);border-radius:19px;margin-bottom:12px}.avatar{width:60px;height:60px;display:grid;place-items:center;font-size:33px;background:#d9f5bd;border-radius:20px}.profile-head h3{margin:0 0 5px}.profile-head p{margin:0;color:var(--muted);font-size:11px}.setting-row{display:flex;align-items:center;justify-content:space-between;padding:15px 3px;border-bottom:1px solid var(--line);font-size:13px}.setting-row:last-child{border-bottom:0}.muted{color:var(--muted);font-size:11px}.bottom-nav{position:fixed;z-index:20;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:520px;padding:9px 7px calc(9px + env(safe-area-inset-bottom));background:#fffef8;border-top:1px solid #d8ead8;display:grid;grid-template-columns:repeat(5,1fr);gap:3px;box-shadow:0 -8px 25px #1a54300d}.nav-btn{background:transparent;color:#789080;border-radius:13px;padding:7px 1px 5px;font-size:10px;display:flex;align-items:center;flex-direction:column;gap:4px}.nav-btn span{font-size:21px;line-height:1.1}.nav-btn.active{background:#e0f7d1;color:#126b3e;font-weight:bold}.toast{position:fixed;z-index:30;bottom:100px;left:50%;transform:translate(-50%,20px);background:#123d2b;color:white;padding:12px 17px;border-radius:13px;font-size:12px;opacity:0;pointer-events:none;transition:.2s;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.field{width:100%;padding:13px;border:1px solid var(--line);background:white;border-radius:12px;font:inherit;margin:8px 0 12px;color:var(--dark)}
+@media(min-width:520px){body{padding:0;background:#d8ebd8}.app{box-shadow:0 0 40px #174c2018}.bottom-nav{bottom:0}}
 </style>
 </head>
 <body>
 <div class="app">
-  <div class="header">
-    <div class="logo">⛏️</div>
-    <div><h2 style="margin:0">AFG TON MINER</h2>
-    <p class="muted">ماینینگ تلگرامی</p></div>
-  </div>
-  <div class="card">
-    <div class="muted">موجودی سکه</div>
-    <div class="balance"><span id="balance">0.00</span> AFG</div>
-    <div class="muted">سطح ماینر: <span id="level">1</span></div>
-    <div class="stats">
-      <div class="stat"><span class="muted">قدرت استخراج</span><strong id="power">0.2 TH/s</strong></div>
-      <div class="stat"><span class="muted">پاداش روزانه</span><strong id="daily">5 سکه</strong></div>
-    </div>
-    <button class="mine" id="mine">⛏️ شروع استخراج</button>
-    <button class="upgrade" id="upgrade">⬆️ ارتقای ماینر</button>
-    <p class="notice" id="status">برای شروع، دکمه استخراج را بزن.</p>
-  </div>
-  <p class="notice">نسخه آزمایشی: موجودی فعلاً فقط در همین صفحه محاسبه می‌شود. برداشت واقعی هنوز فعال نیست.</p>
+<header class="top">
+  <div class="brand"><div class="logo">â›ڈï¸ڈ</div><div><h1>AFG TON MINER</h1><small>ظ…ط§غŒظ† ع©ظ†طŒ ط§ط±طھظ‚ط§ ط¨ط¯ظ‡طŒ ظ¾غŒط´ط±ظپطھ ع©ظ†!</small></div></div>
+  <div class="hello"><div><h2>ط³ظ„ط§ظ…طŒ ظ…ط§غŒظ†ط±! ًں‘‹</h2><p>ط¢ظ…ط§ط¯ظ‡â€Œط§غŒ ط§ظ…ط±ظˆط² ظ…ط¹ط¯ظ† ط±ط§ ظپط¹ط§ظ„ ع©ظ†غŒطں</p></div><div class="mascot">ًں‘·â€چâ™‚ï¸ڈ</div></div>
+</header>
+<main>
+<section class="page active" id="page-home">
+  <div class="section-title"><h3>ًںڈ، ط®ط§ظ†ظ‡ظ” ظ…ط§غŒظ†ط±</h3><span>ط¯ط§ط´ط¨ظˆط±ط¯ طھظˆ</span></div>
+  <div class="balance-card"><div class="eyebrow">ظ…ظˆط¬ظˆط¯غŒ ع©ظ„ طھظˆ</div><div class="balance-line"><span class="balance" id="balance">0.00</span><span class="ticker">AFG ًںھ™</span></div><div class="eyebrow">ط¨ط§ ظ…ط§غŒظ†ط± ط®ظˆط¯طھ ط³ع©ظ‡ ط¬ظ…ط¹ ع©ظ†</div></div>
+  <div class="stats"><div class="stat"><div class="emoji">âڑ،</div><small>ظ‚ط¯ط±طھ ط§ط³طھط®ط±ط§ط¬</small><strong id="power">0.2 TH/s</strong></div><div class="stat"><div class="emoji">ًںژپ</div><small>ظ¾ط§ط¯ط§ط´ ط±ظˆط²ط§ظ†ظ‡</small><strong id="daily">5 AFG</strong></div></div>
+  <div class="miner-card"><div class="miner-top"><span class="level-tag" id="levelTag">ط³ط·ط­ غ±</span><span>ًںں¢ ظپط¹ط§ظ„ ط¯ط± ط­ط§ظ„طھ ط¢ط²ظ…ط§غŒط´غŒ</span></div><h3 id="minerName">ظ…ط§غŒظ†ط± ط³ط¨ط² ع©ظˆع†ع©</h3><p>ظ‡ط±ع†ظ‡ ط³ط·ط­ ط¨ط§ظ„ط§طھط± ط¨ط±ظˆط¯طŒ ظ‚ط¯ط±طھ ظˆ ظ¾ط§ط¯ط§ط´ ط¨غŒط´طھط± ظ…غŒâ€Œط´ظˆط¯.</p><div class="progress"><div id="progressBar"></div></div><button class="btn btn-primary btn-block" onclick="collectNow()">â›ڈï¸ڈ ط¯ط±غŒط§ظپطھ ط¯ط±ط¢ظ…ط¯ ط¢ط²ظ…ط§غŒط´غŒ</button></div>
+  <div class="actions"><button class="btn btn-green" onclick="go('upgrade')">ًںڑ€ ط§ط±طھظ‚ط§غŒ ظ…ط§غŒظ†ط±</button><button class="btn btn-light" onclick="go('missions')">ًںژ¯ ظ…ط£ظ…ظˆط±غŒطھâ€Œظ‡ط§</button></div>
+  <div class="section-title" style="margin-top:22px"><h3>ًں§­ ط¯ط³طھط±ط³غŒ ط³ط±غŒط¹</h3><span>ط¨ط®ط´â€Œظ‡ط§غŒ ط¨ط§ط²غŒ</span></div>
+  <div class="mini-grid"><button class="tile" onclick="go('mine')"><span class="tile-emoji">ًںڈ­</span><strong>ظ…ط¹ط¯ظ† ظ…ظ†</strong><small>ط³ط·ط­â€Œظ‡ط§ ظˆ ظ…ط´ط®طµط§طھ ظ…ط§غŒظ†ط±</small></button><button class="tile" onclick="go('wallet')"><span class="tile-emoji">ًں‘›</span><strong>ع©غŒظپ ظ¾ظˆظ„</strong><small>ط§طھطµط§ظ„ ع©غŒظپ ظ¾ظˆظ„ ظˆ ط¨ط±ط¯ط§ط´طھ ط¢ط²ظ…ط§غŒط´غŒ</small></button><button class="tile" onclick="go('missions')"><span class="tile-emoji">ًں§©</span><strong>ظ…ط£ظ…ظˆط±غŒطھâ€Œظ‡ط§</strong><small>ع©ط§ط±ظ‡ط§غŒ ط±ظˆط²ط§ظ†ظ‡ ظˆ ط¯ط¹ظˆطھ ط¯ظˆط³طھط§ظ†</small></button><button class="tile" onclick="go('profile')"><span class="tile-emoji">ًں§‘â€چًںڑ€</span><strong>ظ¾ط±ظˆظپط§غŒظ„</strong><small>ط§ط·ظ„ط§ط¹ط§طھ ظˆ طھظ†ط¸غŒظ…ط§طھ ط­ط³ط§ط¨</small></button></div>
+</section>
+<section class="page" id="page-mine">
+  <div class="section-title"><h3>ًںڈ­ ظ…ط¹ط¯ظ† ظ…ظ†</h3><span>غŒع© ع©ط§ط±ط¨ط±طŒ غŒع© ظ…ط§غŒظ†ط±</span></div>
+  <div class="subnav"><button class="selected" onclick="mineTab('overview',this)">ظ†ظ…ط§غŒ ع©ظ„غŒ</button><button onclick="mineTab('levels',this)">ط³ط·ط­â€Œظ‡ط§</button><button onclick="mineTab('stats',this)">ط¢ظ…ط§ط± ط§ط³طھط®ط±ط§ط¬</button></div>
+  <div id="mine-overview"><div class="miner-card"><div class="miner-top"><span class="level-tag" id="mineLevelTag">ط³ط·ط­ غ±</span><span>ًںھ´</span></div><h3 id="mineName">ظ…ط§غŒظ†ط± ط³ط¨ط² ع©ظˆع†ع©</h3><p>ظ…ط§غŒظ†ط± ط§ط®طھطµط§طµغŒ طھظˆ ط¯ط± ظ…ط¹ط¯ظ† AFG</p><div class="stats"><div class="stat"><small>ظ‚ط¯ط±طھ ظپط¹ظ„غŒ</small><strong id="minePower">0.2 TH/s</strong></div><div class="stat"><small>ظ¾ط§ط¯ط§ط´ ط±ظˆط²ط§ظ†ظ‡</small><strong id="mineDaily">5 AFG</strong></div></div></div><div class="notice">â„¹ï¸ڈ ط§غŒظ† ظ†ط³ط®ظ‡ ظ†ظ…ط§غŒط´غŒ ط§ط³طھ. ظ‚ط¯ط±طھ TH/s ظپظ‚ط· ظ…ظ‚ط¯ط§ط± ط¨ط§ط²غŒ ط±ط§ ظ†ط´ط§ظ† ظ…غŒâ€Œط¯ظ‡ط¯ ظˆ ط¨ظ‡ ظ…ط¹ظ†غŒ ط§ط³طھط®ط±ط§ط¬ ظˆط§ظ‚ط¹غŒ ط±ظˆغŒ ط´ط¨ع©ظ‡ظ” TON ظ†غŒط³طھ.</div></div>
+  <div id="mine-levels" hidden><div class="level-card"><div class="level-head"><div class="machine">â›ڈï¸ڈ</div><div><h4>ط³ط·ط­ غ± â€” ظ…ط§غŒظ†ط± ط¬ظˆط§ظ†</h4><p>ط³ط·ط­ ظپط¹ظ„غŒ ظ¾ط§غŒظ‡</p></div></div><div class="level-values"><div class="value-box"><small>ظ‚ط¯ط±طھ</small><b>0.2 TH/s</b></div><div class="value-box"><small>ظ¾ط§ط¯ط§ط´ ط±ظˆط²ط§ظ†ظ‡</small><b>5 AFG</b></div></div></div><div class="level-card"><div class="level-head"><div class="machine">ًںڈ­</div><div><h4>ط³ط·ط­ غ² â€” ظ…ط§غŒظ†ط± ط¬ظ†ع¯ظ„غŒ</h4><p>ط§ط±طھظ‚ط§غŒ ط¨ط¹ط¯غŒ</p></div></div><div class="level-values"><div class="value-box"><small>ظ‚ط¯ط±طھ</small><b>0.4 TH/s</b></div><div class="value-box"><small>ظ¾ط§ط¯ط§ط´ ط±ظˆط²ط§ظ†ظ‡</small><b>6 AFG</b></div></div><button class="btn btn-green btn-block" onclick="go('upgrade')">ط¯غŒط¯ظ† ط´ط±ط§غŒط· ط§ط±طھظ‚ط§</button></div></div>
+  <div id="mine-stats" hidden><div class="level-card"><div class="setting-row"><span>ط²ظ…ط§ظ† ط´ط±ظˆط¹ ط¨ط§ط²غŒ</span><b id="startDate">ط§ظ…ط±ظˆط²</b></div><div class="setting-row"><span>ط³ط·ط­ ظپط¹ظ„غŒ</span><b id="statsLevel">غ±</b></div><div class="setting-row"><span>ط¯ط±ط¢ظ…ط¯ ط°ط®غŒط±ظ‡â€Œط´ط¯ظ‡ ط¯ط± ط§غŒظ† ط¯ط³طھع¯ط§ظ‡</span><b id="statsBalance">0 AFG</b></div><div class="setting-row"><span>ظ†ظˆط¹ ط­ط³ط§ط¨</span><b>ط¯ظ…ظˆغŒ ظ…ط­ظ„غŒ</b></div></div></div>
+</section>
+<section class="page" id="page-upgrade">
+  <div class="section-title"><h3>ًںڑ€ ظ…ط±ع©ط² ط§ط±طھظ‚ط§</h3><span>ظ‚ط¯ط±طھ ط¨غŒط´طھط±طŒ ظ¾ط§ط¯ط§ط´ ط¨غŒط´طھط±</span></div>
+  <div class="subnav"><button class="selected" onclick="upgradeTab('machine',this)">ط§ط±طھظ‚ط§غŒ ظ…ط§غŒظ†ط±</button><button onclick="upgradeTab('shop',this)">ظپط±ظˆط´ع¯ط§ظ‡</button><button onclick="upgradeTab('history',this)">طھط§ط±غŒط®ع†ظ‡</button></div>
+  <div id="upgrade-machine"><div class="level-card"><div class="level-head"><div class="machine">ًںŒ±</div><div><h4>ظ…ط§غŒظ†ط± ط³ط¨ط² ع©ظˆع†ع©</h4><p>ظˆط¶ط¹غŒطھ ظپط¹ظ„غŒ: <b id="upgradeCurrent">ط³ط·ط­ غ±</b></p></div></div><div class="level-values"><div class="value-box"><small>ظ‚ط¯ط±طھ ظپط¹ظ„غŒ</small><b id="upgradePower">0.2 TH/s</b></div><div class="value-box"><small>ط¯ط±ط¢ظ…ط¯ ط±ظˆط²ط§ظ†ظ‡</small><b id="upgradeDaily">5 AFG</b></div></div></div><div class="level-card"><div class="level-head"><div class="machine">ًںŒ³</div><div><h4>ظ…ط§غŒظ†ط± ط¬ظ†ع¯ظ„غŒ â€” ط³ط·ط­ غ²</h4><p>غŒع© ظ¾ظ„ظ‡ ظ¾غŒط´ط±ظپطھ ط¯ط± ظ…ط¹ط¯ظ†</p></div></div><div class="level-values"><div class="value-box"><small>ظ‚ط¯ط±طھ ط¨ط¹ط¯ ط§ط² ط§ط±طھظ‚ط§</small><b>0.4 TH/s</b></div><div class="value-box"><small>ظ¾ط§ط¯ط§ط´ ط±ظˆط²ط§ظ†ظ‡</small><b>6 AFG</b></div><div class="value-box"><small>ظ‡ط²غŒظ†ظ‡ظ” ظ†ظ…ط§غŒط´غŒ</small><b class="cost">50 AFG</b></div><div class="value-box"><small>ط´ط±ط·</small><b>ط³ط·ط­ غ±</b></div></div><button id="upgradeBtn" class="btn btn-green btn-block" onclick="upgradeMiner()">âœ¨ ط§ط±طھظ‚ط§ ط¨ظ‡ ط³ط·ط­ غ²</button><p class="muted" style="line-height:1.8">ظ‡ط²غŒظ†ظ‡ظ” غµغ° AFG ظپط¹ظ„ط§ظ‹ ظپظ‚ط· ظ†ظ…ظˆظ†ظ‡ظ” ط·ط±ط§ط­غŒ ط§ط³طھ ظˆ ظ…غŒâ€Œطھظˆط§ظ†غŒظ… ظ¾غŒط´ ط§ط² ط§ظ†طھط´ط§ط± ط¢ظ† ط±ط§ طھط؛غŒغŒط± ط¯ظ‡غŒظ….</p></div></div>
+  <div id="upgrade-shop" hidden><div class="tile"><span class="tile-emoji">ًں›چï¸ڈ</span><strong>ظپط±ظˆط´ع¯ط§ظ‡ طھط¬ظ‡غŒط²ط§طھ</strong><small>ط¨ط¹ط¯ط§ظ‹ ظ…غŒâ€Œطھظˆط§ظ†غŒظ… ظ¾ظˆط³طھظ‡â€Œظ‡ط§طŒ ط§ط¨ط²ط§ط±ظ‡ط§ ظˆ ط¢غŒطھظ…â€Œظ‡ط§غŒ طھط²ط¦غŒظ†غŒ ط§ط¶ط§ظپظ‡ ع©ظ†غŒظ….</small></div></div>
+  <div id="upgrade-history" hidden><div class="level-card"><div class="muted">طھط§ط±غŒط®ع†ظ‡ظ” ط§ط±طھظ‚ط§</div><p id="upgradeHistoryText">ظ‡ظ†ظˆط² ط§ط±طھظ‚ط§غŒغŒ ط§ظ†ط¬ط§ظ… ظ†ط´ط¯ظ‡ ط§ط³طھ.</p></div></div>
+</section>
+<section class="page" id="page-missions">
+  <div class="section-title"><h3>ًںژ¯ ظ…ط£ظ…ظˆط±غŒطھâ€Œظ‡ط§</h3><span>ظ¾ط§ط¯ط§ط´â€Œظ‡ط§غŒ ط¢ط²ظ…ط§غŒط´غŒ</span></div>
+  <div class="subnav"><button class="selected" onclick="missionTab('daily',this)">ط±ظˆط²ط§ظ†ظ‡</button><button onclick="missionTab('social',this)">ط§ط¬طھظ…ط§ط¹غŒ</button><button onclick="missionTab('invite',this)">ط¯ط¹ظˆطھ ط¯ظˆط³طھط§ظ†</button></div>
+  <div id="mission-daily"><div class="mission"><div class="mission-icon">â›ڈï¸ڈ</div><div class="mission-info"><strong>ط¨ط§ط²ط¯غŒط¯ ط§ط² ظ…ط¹ط¯ظ†</strong><small>طµظپط­ظ‡ظ” ظ…ط¹ط¯ظ† ط±ط§ ط¨ط§ط² ع©ظ†</small></div><span class="reward">+5 AFG</span></div><div class="mission"><div class="mission-icon">ًںڑ€</div><div class="mission-info"><strong>ط¨ط±ط±ط³غŒ ط¨ط®ط´ ط§ط±طھظ‚ط§</strong><small>ط¨ط§ ط§ط±طھظ‚ط§ظ‡ط§ ط¢ط´ظ†ط§ ط´ظˆ</small></div><span class="reward">+5 AFG</span></div><div class="mission"><div class="mission-icon">ًں‘›</div><div class="mission-info"><strong>ط¯غŒط¯ظ† ع©غŒظپ ظ¾ظˆظ„</strong><small>ط¨ط®ط´ ع©غŒظپ ظ¾ظˆظ„ ط±ط§ ط¨ط§ط² ع©ظ†</small></div><span class="reward">+5 AFG</span></div><button class="btn btn-green btn-block" onclick="toast('ظ…ط£ظ…ظˆط±غŒطھâ€Œظ‡ط§ ظپط¹ظ„ط§ظ‹ ظ†ظ…ط§غŒط´غŒ ظ‡ط³طھظ†ط¯ط› ظ¾ط§ط¯ط§ط´ ظˆط§ظ‚ط¹غŒ ط¨ط¹ط¯ ط§ط² ط³ط§ط®طھ ط³ط±ظˆط± ظپط¹ط§ظ„ ظ…غŒâ€Œط´ظˆط¯.')">ط¨ط±ط±ط³غŒ ظˆط¶ط¹غŒطھ ظ…ط£ظ…ظˆط±غŒطھâ€Œظ‡ط§</button></div>
+  <div id="mission-social" hidden><div class="mission"><div class="mission-icon">ًں“£</div><div class="mission-info"><strong>ط¹ط¶ظˆغŒطھ ط¯ط± ع©ط§ظ†ط§ظ„ ط±ط³ظ…غŒ</strong><small>ط¨ط¹ط¯ط§ظ‹ ط¨ظ‡ ع©ط§ظ†ط§ظ„ ط±ط³ظ…غŒ ظˆطµظ„ ظ…غŒâ€Œط´ظˆط¯</small></div><span class="muted">ط¨ظ‡â€Œط²ظˆط¯غŒ</span></div><div class="mission"><div class="mission-icon">ًں’¬</div><div class="mission-info"><strong>ط¯ظ†ط¨ط§ظ„â€Œع©ط±ط¯ظ† ط®ط¨ط±ظ‡ط§</strong><small>ظ¾ط§ط¯ط§ط´ ظ¾ط³ ط§ط² ط§طھطµط§ظ„ ط³غŒط³طھظ…</small></div><span class="muted">ط¨ظ‡â€Œط²ظˆط¯غŒ</span></div></div>
+  <div id="mission-invite" hidden><div class="wallet-panel"><div class="wallet-icon">ًں¤‌</div><h3>ط¯ط¹ظˆطھ ط¯ظˆط³طھط§ظ†</h3><p>ظ„غŒظ†ع© ط§ط®طھطµط§طµغŒ ط¯ط¹ظˆطھ ظ¾ط³ ط§ط² ط§طھطµط§ظ„ ط±ط¨ط§طھ طھظ„ع¯ط±ط§ظ… ط³ط§ط®طھظ‡ ظ…غŒâ€Œط´ظˆط¯.</p><button class="btn btn-light btn-block" onclick="toast('ظ„غŒظ†ع© ط¯ط¹ظˆطھ ظ‡ظ†ظˆط² ط¨ظ‡ ط±ط¨ط§طھ ظ…طھطµظ„ ظ†غŒط³طھ.')">ط¯ط±غŒط§ظپطھ ظ„غŒظ†ع© ط¯ط¹ظˆطھ</button></div></div>
+</section>
+<section class="page" id="page-wallet">
+  <div class="section-title"><h3>ًں‘› ع©غŒظپ ظ¾ظˆظ„</h3><span>TON Connect â€” ط¨ط¹ط¯ط§ظ‹</span></div>
+  <div class="wallet-panel"><div class="wallet-icon">ًں’ژ</div><h3>ع©غŒظپ ظ¾ظˆظ„ TON</h3><p>ظˆظ‚طھغŒ ظ†ط³ط®ظ‡ظ” ط³ط±ظˆط±غŒ ط¢ظ…ط§ط¯ظ‡ ط´ط¯طŒ ظ…غŒâ€Œطھظˆط§ظ†غŒظ… ط§طھطµط§ظ„ ط§ظ…ظ† TON Wallet ط±ط§ ط§ط¶ط§ظپظ‡ ع©ظ†غŒظ…. ط¹ط¨ط§ط±طھ ط¨ط§ط²غŒط§ط¨غŒ غŒط§ ع©ظ„غŒط¯ ط®طµظˆطµغŒ ط®ظˆط¯ ط±ط§ ظ‡غŒع†â€Œظˆظ‚طھ ط¯ط§ط®ظ„ ط§غŒظ† ط¨ط±ظ†ط§ظ…ظ‡ ظˆط§ط±ط¯ ظ†ع©ظ†.</p><button class="btn btn-green btn-block" onclick="toast('ط§طھطµط§ظ„ ظˆط§ظ‚ط¹غŒ ع©غŒظپ ظ¾ظˆظ„ ظ‡ظ†ظˆط² ظ¾غŒط§ط¯ظ‡â€Œط³ط§ط²غŒ ظ†ط´ط¯ظ‡ ط§ط³طھ.')">ًں”— ط§طھطµط§ظ„ ع©غŒظپ ظ¾ظˆظ„ (ط؛غŒط±ظپط¹ط§ظ„ ط¯ط± ط¯ظ…ظˆ)</button></div>
+  <div class="stats"><div class="stat"><div class="emoji">ًںھ™</div><small>ظ…ظˆط¬ظˆط¯غŒ ظ†ظ…ط§غŒط´غŒ</small><strong id="walletBalance">0 AFG</strong></div><div class="stat"><div class="emoji">ًں“¤</div><small>ط­ط¯ط§ظ‚ظ„ ط¨ط±ط¯ط§ط´طھ ظ‡ط¯ظپ</small><strong>1000 AFG</strong></div></div>
+  <div class="level-card" style="margin-top:12px"><h3 style="font-size:15px">ط¯ط±ط®ظˆط§ط³طھ ط¨ط±ط¯ط§ط´طھ</h3><p class="muted" style="line-height:1.9">ط§غŒظ† ع¯ط²غŒظ†ظ‡ طھط§ ط²ظ…ط§ظ†غŒ ع©ظ‡ طھظˆع©ظ† ظˆط§ظ‚ط¹غŒطŒ ط³ط±ظˆط± ط§ظ…ظ†طŒ ظ‚ط±ط§ط±ط¯ط§ط¯ ط¨ط±ط¯ط§ط´طھ ظˆ ظ†ظ‚ط¯غŒظ†ع¯غŒ ظپط±ط§ظ‡ظ… ظ†ط´ظˆط¯طŒ ظپط¹ط§ظ„ ظ†غŒط³طھ.</p><button class="btn btn-light btn-block" onclick="toast('ط¨ط±ط¯ط§ط´طھ ظˆط§ظ‚ط¹غŒ ظ‡ظ†ظˆط² ظپط¹ط§ظ„ ظ†غŒط³طھط› ط§غŒظ† ظ†ط³ط®ظ‡ ظپظ‚ط· ظ¾غŒط´â€Œظ†ظ…ط§غŒط´ ط§ط³طھ.')">ط¯ط±ط®ظˆط§ط³طھ ط¨ط±ط¯ط§ط´طھ (ظپط¹ظ„ط§ظ‹ ط؛غŒط±ظپط¹ط§ظ„)</button></div>
+  <div class="notice">âڑ ï¸ڈ ط³ط§ط®طھ طھظˆع©ظ† ط¨ظ‡â€Œطھظ†ظ‡ط§غŒغŒ طھط¶ظ…غŒظ† ظ†ظ…غŒâ€Œع©ظ†ط¯ ع©ظ‡ ط§ط±ط²ط´ ط¨ط§ط²ط§ط± غŒط§ ط®ط±غŒط¯ط§ط± ط¯ط§ط´طھظ‡ ط¨ط§ط´ط¯. ط¨ط±ط§غŒ ظپط±ظˆط´ ظˆط§ظ‚ط¹غŒطŒ ظ†ظ‚ط¯غŒظ†ع¯غŒ ظˆ ط®ط±غŒط¯ط§ط± ظ„ط§ط²ظ… ط§ط³طھ.</div>
+</section>
+<section class="page" id="page-profile">
+  <div class="section-title"><h3>ًں§‘â€چًںڑ€ ظ¾ط±ظˆظپط§غŒظ„</h3><span>ط­ط³ط§ط¨ ظ…ط§غŒظ†ط±</span></div>
+  <div class="profile-head"><div class="avatar">ًں‘·</div><div><h3>ظ…ط§غŒظ†ط± ظ…ظ‡ظ…ط§ظ†</h3><p>ط´ظ†ط§ط³ظ‡: <span id="userId">DEMO-001</span></p><p>ظˆط¶ط¹غŒطھ: ظ†ط³ط®ظ‡ظ” ط¢ط²ظ…ط§غŒط´غŒ</p></div></div>
+  <div class="level-card"><div class="setting-row"><span>ًںژ® ط§ط·ظ„ط§ط¹ط§طھ ط¨ط§ط²غŒ</span><b>AFG Miner</b></div><div class="setting-row"><span>ًںھ™ ظ…ظˆط¬ظˆط¯غŒ</span><b id="profileBalance">0 AFG</b></div><div class="setting-row"><span>ًںڈ… ط³ط·ط­ ظ…ط§غŒظ†ط±</span><b id="profileLevel">غ±</b></div><div class="setting-row"><span>ًںŒگ ط²ط¨ط§ظ†</span><b>ط¯ط±غŒ / ظپط§ط±ط³غŒ</b></div><div class="setting-row"><span>ًں”گ ط§ظ…ظ†غŒطھ</span><b>ظ†ط³ط®ظ‡ظ” ظ…ط­ظ„غŒ</b></div></div>
+  <div class="level-card"><div class="setting-row"><span>ًں“œ ظ‚ظˆط§ظ†غŒظ† ظˆ طھظˆط¶غŒط­ط§طھ</span><button class="btn btn-light" onclick="toast('ظ‚ظˆط§ظ†غŒظ† ظ†ظ‡ط§غŒغŒ ظ¾غŒط´ ط§ط² ط§ظ†طھط´ط§ط± ظ†ظˆط´طھظ‡ ظ…غŒâ€Œط´ظˆط¯.')">ظ…ط´ط§ظ‡ط¯ظ‡</button></div><div class="setting-row"><span>â™»ï¸ڈ ط¨ط§ط²ظ†ط´ط§ظ†غŒ ط¯ظ…ظˆ</span><button class="btn btn-light" onclick="resetDemo()">ط§ط² ظ†ظˆ</button></div></div>
+  <div class="notice">ظ†ط³ط®ظ‡ظ” ظپط¹ظ„غŒ ط¨ط±ط§غŒ ط·ط±ط§ط­غŒ ط±ط§ط¨ط· ع©ط§ط±ط¨ط±غŒ ط§ط³طھ. ظ…ظˆط¬ظˆط¯غŒ ط¯ط§ط®ظ„ ظ…ط±ظˆط±ع¯ط± ط°ط®غŒط±ظ‡ ظ…غŒâ€Œط´ظˆط¯ ظˆ ظ‡ظ†ظˆط² ط¨ظ‡ ط­ط³ط§ط¨ ع©ط§ط±ط¨ط±غŒ غŒط§ ط¨ظ„ط§ع©â€Œع†غŒظ† ظ…طھطµظ„ ظ†غŒط³طھ.</div>
+</section>
+</main>
+<nav class="bottom-nav" aria-label="ظ†ط§ظˆط¨ط±غŒ ط§طµظ„غŒ"><button class="nav-btn active" data-page="home" onclick="go('home')"><span>ًںڈ،</span>ط®ط§ظ†ظ‡</button><button class="nav-btn" data-page="mine" onclick="go('mine')"><span>ًںڈ­</span>ظ…ط¹ط¯ظ†</button><button class="nav-btn" data-page="upgrade" onclick="go('upgrade')"><span>ًںڑ€</span>ط§ط±طھظ‚ط§</button><button class="nav-btn" data-page="missions" onclick="go('missions')"><span>ًںژ¯</span>ظ…ط£ظ…ظˆط±غŒطھ</button><button class="nav-btn" data-page="wallet" onclick="go('wallet')"><span>ًں‘›</span>ع©غŒظپ ظ¾ظˆظ„</button></nav>
+<div class="toast" id="toast" role="status"></div>
 </div>
 <script>
-const tg=window.Telegram?.WebApp;
-tg?.ready();
-tg?.expand();
-
-let balance=0;
-let level=1;
-let lastMine=0;
-
-const $=id=>document.getElementById(id);
-function render(){
-  $("balance").textContent=balance.toFixed(2);
-  $("level").textContent=level;
-  $("power").textContent=(level===1?0.2:0.4)+" TH/s";
-  $("daily").textContent=(level===1?5:6)+" سکه";
-}
-$("mine").onclick=()=>{
-  const now=Date.now();
-  if(now-lastMine<3000){
-    $("status").textContent="چند لحظه صبر کن و دوباره امتحان کن.";
-    return;
-  }
-  lastMine=now;
-  balance+=level===1?0.01:0.012;
-  render();
-  $("status").textContent="استخراج آزمایشی انجام شد!";
-};
-$("upgrade").onclick=()=>{
-  if(level>=2){
-    $("status").textContent="فعلاً فقط دو سطح در نسخه آزمایشی داریم.";
-    return;
-  }
-  if(balance<10){
-    $("status").textContent="برای آزمایش ارتقا، به 10 سکه نیاز داری.";
-    return;
-  }
-  balance-=10;
-  level=2;
-  render();
-  $("status").textContent="ماینر به سطح 2 ارتقا یافت!";
-};
-render();
+const KEY='afgTonMinerDemoV1';
+const defaults={balance:0,level:1,lastTime:Date.now(),startDate:Date.now(),upgradeHistory:''};
+let state={...defaults,...loadState()};
+function loadState(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));render()}
+function levelInfo(){return state.level===1?{power:'0.2 TH/s',daily:5,name:'ظ…ط§غŒظ†ط± ط³ط¨ط² ع©ظˆع†ع©'}:{power:'0.4 TH/s',daily:6,name:'ظ…ط§غŒظ†ط± ط¬ظ†ع¯ظ„غŒ'}}
+function accrue(){const now=Date.now();if(!state.lastTime)state.lastTime=now;const elapsed=Math.max(0,now-state.lastTime);state.balance+=levelInfo().daily*(elapsed/86400000);state.lastTime=now;}
+function fmt(n){return Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:4})}
+function render(){const l=levelInfo();const b=fmt(state.balance);['balance','walletBalance','profileBalance','statsBalance'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=id==='balance'?b:(id==='statsBalance'?b+' AFG':b+' AFG')});['power','minePower','upgradePower'].forEach(id=>document.getElementById(id).textContent=l.power);['daily','mineDaily','upgradeDaily'].forEach(id=>document.getElementById(id).textContent=l.daily+' AFG');['levelTag','mineLevelTag','upgradeCurrent'].forEach(id=>document.getElementById(id).textContent='ط³ط·ط­ '+(state.level===1?'غ±':'غ²'));['minerName','mineName'].forEach(id=>document.getElementById(id).textContent=l.name);document.getElementById('upgradeBtn').disabled=state.level>1;document.getElementById('upgradeBtn').style.opacity=state.level>1?'.55':'1';document.getElementById('upgradeBtn').textContent=state.level>1?'âœ… ظ…ط§غŒظ†ط± ط¯ط± ط³ط·ط­ ط¢ط®ط± ط§ط³طھ':'âœ¨ ط§ط±طھظ‚ط§ ط¨ظ‡ ط³ط·ط­ غ²';document.getElementById('upgradeHistoryText').textContent=state.upgradeHistory||'ظ‡ظ†ظˆط² ط§ط±طھظ‚ط§غŒغŒ ط§ظ†ط¬ط§ظ… ظ†ط´ط¯ظ‡ ط§ط³طھ.';document.getElementById('statsLevel').textContent=state.level===1?'غ±':'غ²';document.getElementById('profileLevel').textContent=state.level===1?'غ±':'غ²';document.getElementById('progressBar').style.width=state.level===1?'38%':'100%';document.getElementById('startDate').textContent=new Date(state.startDate).toLocaleDateString('fa-IR');}
+function collectNow(){accrue();save();toast('ط¯ط±ط¢ظ…ط¯ ط¨ط± ط§ط³ط§ط³ ط²ظ…ط§ظ† ع¯ط°ط´طھظ‡ ط¨ظ‡ ظ…ظˆط¬ظˆط¯غŒ ط¢ط²ظ…ط§غŒط´غŒ ط§ط¶ط§ظپظ‡ ط´ط¯.');}
+function upgradeMiner(){accrue();if(state.level>1){toast('ظ…ط§غŒظ†ط± ط¨ظ‡ ط¨ط§ظ„ط§طھط±غŒظ† ط³ط·ط­ ظپط¹ظ„غŒ ط±ط³غŒط¯ظ‡ ط§ط³طھ.');return}if(state.balance<50){save();toast('ط¨ط±ط§غŒ ط§ط±طھظ‚ط§غŒ ط¢ط²ظ…ط§غŒط´غŒ ط¨ظ‡ غµغ° AFG ظ†غŒط§ط² ط¯ط§ط±غŒ. ط§ظˆظ„ ط¨ع¯ط°ط§ط± ظ…ظˆط¬ظˆط¯غŒ ط¬ظ…ط¹ ط´ظˆط¯.');return}state.balance-=50;state.level=2;state.upgradeHistory='ط§ط±طھظ‚ط§ ط¨ظ‡ ط³ط·ط­ غ² â€” '+new Date().toLocaleDateString('fa-IR');save();toast('طھط¨ط±غŒع©! ظ…ط§غŒظ†ط± ط¨ظ‡ ط³ط·ط­ غ² ط§ط±طھظ‚ط§ غŒط§ظپطھ.');}
+function go(name){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+name).classList.add('active');document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===name));window.scrollTo({top:0,behavior:'smooth'});if(name==='mine')mineTab('overview',document.querySelector('#page-mine .subnav button'));if(name==='upgrade')upgradeTab('machine',document.querySelector('#page-upgrade .subnav button'));if(name==='missions')missionTab('daily',document.querySelector('#page-missions .subnav button'));}
+function setTab(prefix,key,btn,keys){keys.forEach(k=>{const el=document.getElementById(prefix+'-'+k);if(el)el.hidden=k!==key});btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected')}
+function mineTab(k,b){setTab('mine',k,b,['overview','levels','stats'])}function upgradeTab(k,b){setTab('upgrade',k,b,['machine','shop','history'])}function missionTab(k,b){setTab('mission',k,b,['daily','social','invite'])}
+let toastTimer;function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3000)}
+function resetDemo(){if(confirm('ظ‡ظ…ظ‡ظ” ط§ط·ظ„ط§ط¹ط§طھ ط¢ط²ظ…ط§غŒط´غŒ ط§غŒظ† ظ…ط±ظˆط±ع¯ط± ظ¾ط§ع© ط´ظˆط¯طں')){localStorage.removeItem(KEY);state={...defaults,lastTime:Date.now(),startDate:Date.now()};save();go('home');toast('ط¯ظ…ظˆ ط§ط² ظ†ظˆ ط´ط±ظˆط¹ ط´ط¯.')}}
+accrue();save();setInterval(()=>{accrue();save()},30000);
 </script>
 </body>
-</html>
+                                    </html>
