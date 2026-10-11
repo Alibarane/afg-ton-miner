@@ -28,15 +28,23 @@ body {
 }
 button,input { font:inherit; }
 button { cursor:pointer; }
-button:disabled { opacity:.45; cursor:not-allowed; }
-.app { max-width:520px; margin:auto; padding:14px 14px 100px; }
-header {
-  display:flex; justify-content:space-between;
-  align-items:center; margin-bottom:16px;
+button:disabled { opacity:.45;cursor:not-allowed; }
+.app {
+  max-width:520px;
+  margin:15px auto 0;
+  padding:14px 14px 110px;
+  border:1px solid var(--border);
+  border-radius:22px;
 }
-.brand { display:flex; align-items:center; gap:10px; }
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:16px;
+}
+.brand { display:flex;align-items:center;gap:10px; }
 .logo {
-  width:51px;height:51px;border-radius:16px;
+  width:51px;height:51px;border-radius:12px;
   display:grid;place-items:center;
   background:linear-gradient(145deg,#d0ff9e,#55b975);
   color:#15301e;font-size:20px;font-weight:1000;
@@ -57,21 +65,47 @@ header {
 .label { color:#d1e7c6;font-size:12px; }
 .big { font-size:33px;font-weight:900;margin:7px 0; }
 .gold { color:var(--gold); }
-.stats { display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:17px; }
+.stats {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;margin-top:17px;
+}
 .stat { background:#0a21154d;padding:10px 7px;border-radius:12px; }
 .stat small { color:var(--muted);font-size:10px;display:block; }
-.stat b { display:block;font-size:12px;margin-top:7px;direction:ltr;text-align:right; }
+.stat b {
+  display:block;font-size:12px;margin-top:7px;
+  direction:ltr;text-align:right;
+}
+.home-brand {
+  display:flex;align-items:center;gap:13px;
+  margin:12px 0 16px;padding:14px;
+  background:#173b28;border:1px solid #52784a;border-radius:17px;
+}
+.home-logo {
+  width:76px;height:76px;flex:0 0 76px;
+  border-radius:10px;display:grid;place-items:center;
+  background:linear-gradient(145deg,#d0ff9e,#55b975);
+  color:#15301e;font-size:24px;font-weight:1000;
+  border:2px solid #e0ffc1;
+  box-shadow:0 5px 18px #9fea7640;
+}
+.home-brand-title { font-size:16px;font-weight:bold; }
+.home-brand-subtitle {
+  margin-top:7px;color:var(--muted);font-size:11px;line-height:1.9;
+}
 .hero {
   margin:13px 0;padding:17px;border-radius:20px;
   background:linear-gradient(140deg,#335e39,#183c28);
   border:1px solid #52784a;position:relative;overflow:hidden;
 }
 .hero h2 { font-size:17px;margin:0 0 8px; }
-.hero p { color:var(--muted);font-size:12px;line-height:2;margin:0;max-width:80%; }
+.hero p {
+  color:var(--muted);font-size:12px;line-height:2;
+  margin:0;max-width:80%;
+}
 .hero svg { position:absolute;left:0;bottom:0;width:37%;height:100%; }
 .section-head {
   display:flex;align-items:center;justify-content:space-between;
-  margin:21px 2px 11px;
+  gap:8px;margin:21px 2px 11px;
 }
 .section-head h2 { font-size:16px;margin:0; }
 .section-head small { color:var(--muted);font-size:11px; }
@@ -86,7 +120,10 @@ header {
 }
 .row { display:flex;align-items:center;justify-content:space-between;gap:10px; }
 .muted { color:var(--muted);font-size:12px;line-height:1.9; }
-.progress { height:7px;background:#102719;border-radius:20px;overflow:hidden;margin-top:12px; }
+.progress {
+  height:7px;background:#102719;border-radius:20px;
+  overflow:hidden;margin-top:12px;
+}
 .progress div { height:100%;width:0;background:var(--green); }
 .page { display:none; }
 .page.active { display:block; }
@@ -132,56 +169,51 @@ header {
   border:1px solid #52745b;border-radius:11px;
   background:#102b1c;color:var(--text);
 }
-.wallet-address { direction:ltr;text-align:left;font-size:11px; }
 .notice {
   margin-top:11px;padding:11px;border-radius:12px;
   background:#102b1c;border:1px solid #42664a;
   font-size:11px;color:#d4e6cf;line-height:2;
 }
-
+.avatar-frame {
+  width:92px;height:92px;margin:12px auto;
+  border:2px solid var(--green);border-radius:16px;
+  background:#102b1c;display:grid;place-items:center;
+  overflow:hidden;font-size:34px;
+}
+.avatar-frame img { width:100%;height:100%;object-fit:cover; }
+.profile-file {
+  display:block;width:100%;margin-top:10px;
+  color:var(--text);font-size:12px;
+}
+.profile-rewards {
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;
+}
+.reward-card {
+  background:#102b1c;border:1px solid #42664a;
+  padding:10px;border-radius:12px;text-align:center;
+}
+.reward-card b { display:block;color:var(--gold);margin-top:5px;font-size:12px; }
 .nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background: #10251bf5;
-  border-top: 1px solid #416849;
-  padding: 8px 2px calc(8px + env(safe-area-inset-bottom));
+  position:fixed;bottom:0;left:0;right:0;z-index:10;
+  background:#10251bf5;border-top:1px solid #416849;
+  padding:8px 2px calc(8px + env(safe-area-inset-bottom));
 }
-
 .nav-inner {
-  width: 100%;
-  max-width: 520px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0;
+  width:100%;max-width:520px;margin:auto;
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;
 }
-
 .nav button {
-  min-width: 0;
-  white-space: nowrap;
-  border: 0;
-  border-radius: 10px;
-  background: transparent;
-  color: #b5c8b5;
-  font-size: 9px;
-  padding: 7px 0;
+  min-width:0;white-space:nowrap;border:0;border-radius:10px;
+  background:transparent;color:#b5c8b5;font-size:9px;padding:7px 0;
 }
-
-.nav button span {
-  display: block;
-  font-size: 18px;
-  margin-bottom: 3px;
-}
-
-.nav button.active {
-  background: #a9ef7618;
-  color: #a9ef76;
-}
-
-  .app { margin-top:15px;border:1px solid var(--border);border-radius:22px; }
+.nav button span { display:block;font-size:18px;margin-bottom:3px; }
+.nav button.active { background:#a9ef7618;color:#a9ef76; }
+hr { border-color:#416849;margin:18px 0; }
+@media(max-width:360px) {
+  .app { padding-left:9px;padding-right:9px; }
+  .nav button { font-size:8px; }
+  .nav button span { font-size:17px; }
+  .big { font-size:28px; }
 }
 </style>
 </head>
@@ -196,12 +228,21 @@ header {
       <small>معدن دیجیتالی تو</small>
     </div>
   </div>
-  <button class="btn2" id="soundButton">🔊</button>
+  <button class="btn2" id="soundButton" aria-label="صدای بازی">🔊</button>
 </header>
 
 <main>
-<!-- خانه -->
 <section class="page active" id="home">
+  <div class="home-brand">
+    <div class="home-logo">AFG</div>
+    <div>
+      <div class="home-brand-title">AFG TON Miner</div>
+      <div class="home-brand-subtitle">
+        معدن دیجیتالی تو؛ استخراج کن و سطح خود را ارتقا بده.
+      </div>
+    </div>
+  </div>
+
   <div class="balance">
     <div class="label">موجودی سکه‌ها</div>
     <div class="big" id="coins">۵</div>
@@ -216,7 +257,7 @@ header {
   <div class="hero">
     <h2>به معدن AFG خوش آمدی</h2>
     <p>ماینرت را ارتقا بده، وظایف را انجام بده و با دعوت دوستان، تیم خود را بساز.</p>
-    <svg viewBox="0 0 160 130">
+    <svg viewBox="0 0 160 130" aria-hidden="true">
       <path d="M0 130 L35 65 L55 90 L90 20 L125 82 L143 60 L160 92 L160 130Z" fill="#628e4a"/>
       <path d="M72 56 L90 20 L110 58 L95 51 L88 61 L80 50Z" fill="#d5f3a3"/>
     </svg>
@@ -241,18 +282,16 @@ header {
   </div>
 </section>
 
-<!-- ماینرها -->
 <section class="page" id="miners">
   <div class="section-head"><h2>کارت‌های ماینر</h2><small id="levelCount">۱ از ۱۰۰</small></div>
   <div class="panel">
     <b>سیستم ارتقا</b>
-    <div class="muted">هر سطح قدرت، درآمد و کارت مخصوص خود را دارد.</div>
-    <div class="notice">هزینه ارتقای سطح ۲ برابر ۱۰۰ و سطح ۳ برابر ۱۲۰ سکه است. هزینه سطح ۱۰۰ برابر ۸۰۰۰ سکه تنظیم شده است.</div>
+    <div class="muted">هر سطح قدرت، درآمد و ظاهر کارت مخصوص خود را دارد.</div>
+    <div class="notice">هزینهٔ سطح ۲: ۱۰۰ سکه؛ سطح ۳: ۱۲۰ سکه؛ سطح ۱۰۰: ۸۰۰۰ سکه.</div>
   </div>
   <div class="miner-grid" id="minerGrid"></div>
 </section>
 
-<!-- تیم و وظایف -->
 <section class="page" id="team">
   <div class="section-head"><h2>تیم و دعوت دوستان</h2></div>
   <div class="panel">
@@ -260,38 +299,38 @@ header {
     <div class="muted">۱۰۰ سکه آزمایشی برای هر دعوت موفق</div>
     <input class="field" id="inviteLink" readonly>
     <button class="btn" id="copyInvite" style="width:100%;margin-top:10px">کپی لینک دعوت</button>
-    <div class="notice">لینک فعلی نمونه است؛ ثبت واقعی دعوت‌ها بعداً با بک‌اند انجام می‌شود.</div>
+    <div class="notice">لینک فعلی نمونه است؛ ثبت واقعی دعوت‌ها هنوز راه‌اندازی نشده است.</div>
   </div>
   <div class="section-head"><h2>وظایف</h2><small>۷ وظیفه · هرکدام ۲۰ سکه</small></div>
   <div class="panel" id="tasks"></div>
 </section>
 
-<!-- کیف پول -->
 <section class="page" id="wallet">
   <div class="section-head"><h2>کیف پول TON</h2></div>
   <div class="panel">
     <b>۱. درخواست برداشت</b>
     <div class="muted">حداقل برداشت: ۱۰۰۰ سکه</div>
     <button class="btn" id="withdrawButton" style="width:100%;margin-top:12px">درخواست برداشت</button>
-    <div class="notice" id="withdrawMessage">برداشت واقعی تا زمان راه‌اندازی بک‌اند و قرارداد توکن غیرفعال است.</div>
+    <div class="notice" id="withdrawMessage">
+      برداشت واقعی تا زمان راه‌اندازی بک‌اند و قرارداد توکن غیرفعال است.
+    </div>
   </div>
 
   <div class="panel">
-    <b>۲. کیف پول مدیر پروژه</b>
-    <div class="muted">آدرس عمومی تعیین‌شده برای دریافت پرداخت‌ها</div>
-    <input class="field wallet-address" id="adminWallet" readonly>
-    <button class="btn2" id="copyWallet" style="width:100%;margin-top:10px">کپی آدرس کیف پول</button>
+    <b>۲. اتصال کیف پول</b>
+    <div class="muted">اتصال امن کیف پول TON برای استفادهٔ آینده در نظر گرفته شده است.</div>
+    <button class="btn2" id="connectButton" style="width:100%;margin-top:10px">
+      آماده‌سازی اتصال کیف پول
+    </button>
     <div class="notice">
-      مبلغ تأیید موردنظر: ۰٫۰۵ TON.<br>
-      اتصال TonConnect و تأیید خودکار تراکنش هنوز فعال نشده است. فعلاً هیچ پرداختی انجام نده.
+      اتصال TonConnect هنوز فعال نشده است. برای این نسخه هیچ پرداختی انجام نده و عبارت بازیابی یا کلید خصوصی خود را وارد نکن.
     </div>
-    <button class="btn2" id="connectButton" style="width:100%;margin-top:10px">آماده‌سازی اتصال کیف پول</button>
   </div>
 
   <div class="panel">
     <b>۳. موجودی سکه‌ها</b>
     <div class="big gold" id="walletCoins">۵</div>
-    <div class="muted">موجودی نمایشی این نسخه آزمایشی</div>
+    <div class="muted">موجودی نمایشی این نسخهٔ آزمایشی</div>
   </div>
 
   <div class="panel">
@@ -301,18 +340,50 @@ header {
   </div>
 </section>
 
-<!-- تنظیمات -->
 <section class="page" id="settings">
-  <div class="section-head"><h2>تنظیمات</h2></div>
+  <div class="section-head"><h2>پروفایل و تنظیمات</h2></div>
+
   <div class="panel">
     <b>نام بازیکن</b>
     <input class="field" id="playerName" placeholder="نام خود را وارد کن" maxlength="32">
-    <button class="btn" id="saveName" style="width:100%;margin-top:9px">ذخیره نام</button>
-    <hr style="border-color:#416849;margin:18px 0">
+    <button class="btn" id="saveName" style="width:100%;margin-top:9px">ذخیره نام · پاداش ۲۰ سکه</button>
+
+    <hr>
+
+    <div class="section-head">
+      <h2>عکس پروفایل</h2>
+      <small>از گالری گوشی</small>
+    </div>
+
+    <div class="avatar-frame">
+      <span id="avatarPlaceholder">👷</span>
+      <img id="profilePreview" alt="عکس پروفایل" style="display:none">
+    </div>
+
+    <input class="profile-file" id="profilePhoto" type="file" accept="image/*">
+
+    <div class="muted">یک عکس انتخاب کن. عکس کوچک می‌شود تا فضای کمتری اشغال کند.</div>
+    <button class="btn" id="savePhoto" style="width:100%;margin-top:10px">ذخیره عکس · پاداش ۲۰ سکه</button>
+
+    <div class="profile-rewards">
+      <div class="reward-card">
+        پاداش نام
+        <b id="nameRewardStatus">دریافت نشده</b>
+      </div>
+      <div class="reward-card">
+        پاداش عکس
+        <b id="photoRewardStatus">دریافت نشده</b>
+      </div>
+    </div>
+
+    <div class="notice">ثبت نام برای بار اول ۲۰ سکه و ذخیرهٔ عکس برای بار اول ۲۰ سکه می‌دهد. تغییر دوبارهٔ آن‌ها پاداش تازه ندارد.</div>
+
+    <hr>
     <div class="row"><b>صدای بازی</b><button class="btn2" id="toggleSound">روشن</button></div>
-    <hr style="border-color:#416849;margin:18px 0">
+
+    <hr>
     <b>ذخیره اطلاعات</b>
-    <div class="muted">پیشرفت آزمایشی در مرورگر همین دستگاه ذخیره می‌شود.</div>
+    <div class="muted">اطلاعات این نسخه فقط در مرورگر همین دستگاه ذخیره می‌شود.</div>
     <button class="btn2" id="resetGame" style="width:100%;margin-top:12px">شروع دوباره</button>
   </div>
 </section>
@@ -332,11 +403,8 @@ header {
 <script>
 "use strict";
 
-const ADMIN_WALLET =
-"UQAHwO7azTXIlvHpxni7hJy0xW3DqTH8a2ttzhPpPpqD15mX";
-
 const TASKS = [
-  ["📅","ورود به بازی","صفحه خانه را ببین"],
+  ["📅","ورود به بازی","صفحهٔ خانه را ببین"],
   ["👥","دعوت دوستان","لینک دعوت را بررسی کن"],
   ["⛏️","بازدید معدن","بخش ماینر را باز کن"],
   ["💎","بازدید کیف پول","بخش کیف پول را باز کن"],
@@ -351,52 +419,63 @@ const DEFAULT_STATE = {
   claimedAt:0,
   completed:[],
   sound:true,
-  name:""
+  name:"",
+  profileImage:"",
+  nameRewarded:false,
+  photoRewarded:false
 };
 
 let state = {...DEFAULT_STATE};
 
 try {
   const saved = localStorage.getItem("afgMinerDemo");
-  if(saved) state = {...DEFAULT_STATE,...JSON.parse(saved)};
+  if(saved) {
+    const parsed = JSON.parse(saved);
+    state = {...DEFAULT_STATE,...parsed};
+
+    // از تکرار پاداش نام‌های ذخیره‌شده در نسخهٔ قبلی جلوگیری می‌کند.
+    if(parsed.name && parsed.nameRewarded === undefined) {
+      state.nameRewarded = true;
+    }
+  }
 } catch(e) {}
 
 function save() {
   try {
     localStorage.setItem("afgMinerDemo",JSON.stringify(state));
-  } catch(e) {}
+  } catch(e) {
+    notify("فضای ذخیره‌سازی پر است؛ یک عکس کوچک‌تر انتخاب کن");
+  }
   renderStats();
+  renderRewardStatus();
 }
 
 function fmt(n) {
   return Math.floor(n).toLocaleString("fa-IR");
 }
 
-/* درآمد: سطح ۱ = ۵، سطح ۲ = ۶، سطح ۱۰۰ = ۸۰۰ */
 function dailyIncome(level) {
   if(level === 1) return 5;
-  return Math.round(6 + (level-2) * (794/98));
+  return Math.round(6 + (level-2)*(794/98));
 }
 
-/* قدرت: سطح ۱ = ۰٫۲، سطح ۲ = ۰٫۴، سپس رشد ۲۰ درصدی */
 function miningPower(level) {
   if(level === 1) return 0.2;
   if(level === 2) return 0.4;
-  return 0.4 * Math.pow(1.2,level-2);
+  return 0.4*Math.pow(1.2,level-2);
 }
 
-/* هزینه: سطح ۲ = ۱۰۰، سطح ۳ = ۱۲۰، سطح ۱۰۰ = ۸۰۰۰ */
 function upgradeCost(level) {
   if(level <= 1) return 0;
   if(level === 2) return 100;
   if(level === 3) return 120;
-  return Math.round(120 + (level-3)*(7880/97));
+  return Math.round(120+(level-3)*(7880/97));
 }
 
 function powerText(level) {
   return miningPower(level).toLocaleString("en-US",{
     maximumFractionDigits:2
-  }) + " TH/s";
+  })+" TH/s";
 }
 
 function notify(message) {
@@ -414,7 +493,7 @@ function notify(message) {
   el.textContent = message;
   el.style.display = "block";
   clearTimeout(window.toastTimer);
-  window.toastTimer = setTimeout(()=>el.style.display="none",2400);
+  window.toastTimer = setTimeout(()=>el.style.display="none",2600);
 }
 
 function playSound() {
@@ -430,7 +509,7 @@ function playSound() {
     osc.frequency.value = 650;
     gain.gain.value = 0.04;
     osc.start();
-    osc.stop(ctx.currentTime + 0.08);
+    osc.stop(ctx.currentTime+0.08);
   } catch(e) {}
 }
 
@@ -441,48 +520,63 @@ function renderStats() {
   document.getElementById("powerStat").textContent = powerText(state.level);
   document.getElementById("incomeStat").textContent = fmt(dailyIncome(state.level));
   document.getElementById("activeMiner").textContent =
-    "سطح " + fmt(state.level) + " · روزانه " +
-    fmt(dailyIncome(state.level)) + " سکه";
+    "سطح "+fmt(state.level)+" · روزانه "+fmt(dailyIncome(state.level))+" سکه";
 
-  const next = state.level + 1;
+  const next = state.level+1;
   document.getElementById("nextTitle").textContent =
-    state.level >= 100 ? "بالاترین سطح" : "سطح " + fmt(next);
-  document.getElementById("nextCost").textContent =
-    state.level >= 100 ? "ارتقای دیگری وجود ندارد" :
-    "هزینه: " + fmt(upgradeCost(next)) + " سکه";
+    state.level>=100 ? "بالاترین سطح" : "سطح "+fmt(next);
 
-  const up = document.getElementById("quickUpgrade");
-  up.disabled = state.level >= 100 ||
-    state.coins < upgradeCost(next);
+  document.getElementById("nextCost").textContent =
+    state.level>=100 ? "ارتقای دیگری وجود ندارد" :
+    "هزینه: "+fmt(upgradeCost(next))+" سکه";
+
+  document.getElementById("quickUpgrade").disabled =
+    state.level>=100 || state.coins<upgradeCost(next);
 
   const ready = !state.claimedAt ||
-    Date.now() - state.claimedAt >= 86400000;
+    Date.now()-state.claimedAt>=86400000;
 
-  const claim = document.getElementById("claimButton");
-  claim.disabled = !ready;
+  document.getElementById("claimButton").disabled = !ready;
   document.getElementById("claimStatus").textContent = ready ?
-    "پاداش آزمایشی آماده دریافت است" :
+    "پاداش آزمایشی آمادهٔ دریافت است" :
     "برای پاداش بعدی باید ۲۴ ساعت بگذرد";
 
   const elapsed = state.claimedAt ?
     Math.min(100,(Date.now()-state.claimedAt)/86400000*100) : 100;
-  document.getElementById("progressBar").style.width = elapsed + "%";
 
-  document.getElementById("levelCount").textContent =
-    fmt(state.level) + " از ۱۰۰";
+  document.getElementById("progressBar").style.width = elapsed+"%";
+  document.getElementById("levelCount").textContent = fmt(state.level)+" از ۱۰۰";
   document.getElementById("playerName").value = state.name || "";
-  document.getElementById("toggleSound").textContent =
-    state.sound ? "روشن" : "خاموش";
-  document.getElementById("soundButton").textContent =
-    state.sound ? "🔊" : "🔇";
+  document.getElementById("toggleSound").textContent = state.sound ? "روشن" : "خاموش";
+  document.getElementById("soundButton").textContent = state.sound ? "🔊" : "🔇";
 }
 
-/* تصویر کوچک اختصاصی بر اساس سطح ماینر */
+function renderRewardStatus() {
+  document.getElementById("nameRewardStatus").textContent =
+    state.nameRewarded ? "دریافت شد ✓" : "دریافت نشده";
+  document.getElementById("photoRewardStatus").textContent =
+    state.photoRewarded ? "دریافت شد ✓" : "دریافت نشده";
+}
+
+function renderProfile() {
+  const preview = document.getElementById("profilePreview");
+  const placeholder = document.getElementById("avatarPlaceholder");
+
+  if(state.profileImage) {
+    preview.src = state.profileImage;
+    preview.style.display = "block";
+    placeholder.style.display = "none";
+  } else {
+    preview.removeAttribute("src");
+    preview.style.display = "none";
+    placeholder.style.display = "block";
+  }
+}
+
 function minerImage(level) {
-  const colors = [
-    "#c6df83","#e9c45e","#7fe0c0","#a8c9f0","#d5b4ff"
-  ];
+  const colors = ["#c6df83","#e9c45e","#7fe0c0","#a8c9f0","#d5b4ff"];
   const helmet = colors[Math.min(4,Math.floor((level-1)/20))];
+
   return `<svg viewBox="0 0 100 100" aria-hidden="true">
     <ellipse cx="50" cy="90" rx="30" ry="5" fill="#0c2417"/>
     <path d="M24 47 Q25 24 50 24 Q75 24 76 47 L70 61 L30 61Z"
@@ -508,19 +602,19 @@ function renderMiners() {
   const grid = document.getElementById("minerGrid");
   let html = "";
 
-  for(let level=1; level<=100; level++) {
-    const current = level === state.level;
-    const unlocked = level <= state.level;
+  for(let level=1;level<=100;level++) {
+    const current = level===state.level;
+    const unlocked = level<=state.level;
     const cost = upgradeCost(level);
 
     let buttonText;
     if(current) buttonText = "ماینر فعال";
     else if(unlocked) buttonText = "سطح باز شده";
-    else if(level === state.level+1) buttonText = "ارتقا به این سطح";
+    else if(level===state.level+1) buttonText = "ارتقا به این سطح";
     else buttonText = "قفل است";
 
     const disabled = current || unlocked ||
-      level !== state.level+1 || state.coins < cost;
+      level!==state.level+1 || state.coins<cost;
 
     html += `
       <article class="miner ${current?"current":""}">
@@ -540,10 +634,8 @@ function renderMiners() {
   }
 
   grid.innerHTML = html;
-  grid.querySelectorAll("[data-upgrade]").forEach(button => {
-    button.addEventListener("click",()=>
-      upgrade(Number(button.dataset.upgrade))
-    );
+  grid.querySelectorAll("[data-upgrade]").forEach(button=>{
+    button.addEventListener("click",()=>upgrade(Number(button.dataset.upgrade)));
   });
 }
 
@@ -570,23 +662,26 @@ function renderTasks() {
     button.addEventListener("click",()=>{
       const index = Number(button.dataset.task);
       if(state.completed.includes(index)) return;
+
       state.completed.push(index);
       state.coins += 20;
       save();
       renderTasks();
       playSound();
-      notify("۲۰ سکه آزمایشی اضافه شد");
+      notify("۲۰ سکهٔ آزمایشی اضافه شد");
     });
   });
 }
 
 function upgrade(level) {
-  if(level !== state.level+1 || level>100) return;
+  if(level!==state.level+1 || level>100) return;
+
   const cost = upgradeCost(level);
-  if(state.coins < cost) {
+  if(state.coins<cost) {
     notify("سکه کافی نیست");
     return;
   }
+
   state.coins -= cost;
   state.level = level;
   save();
@@ -605,6 +700,10 @@ document.querySelectorAll("[data-page]").forEach(button=>{
     );
     if(button.dataset.page==="miners") renderMiners();
     if(button.dataset.page==="team") renderTasks();
+    if(button.dataset.page==="settings") {
+      renderProfile();
+      renderRewardStatus();
+    }
   });
 });
 
@@ -613,6 +712,7 @@ document.getElementById("claimButton").addEventListener("click",()=>{
     notify("هنوز ۲۴ ساعت نگذشته است");
     return;
   }
+
   state.coins += dailyIncome(state.level);
   state.claimedAt = Date.now();
   save();
@@ -624,7 +724,6 @@ document.getElementById("quickUpgrade").addEventListener("click",()=>{
   upgrade(state.level+1);
 });
 
-document.getElementById("adminWallet").value = ADMIN_WALLET;
 document.getElementById("inviteLink").value =
   "https://t.me/AFGTonMinerBot?start=demo-user";
 
@@ -633,57 +732,159 @@ async function copyText(text) {
     await navigator.clipboard.writeText(text);
     notify("کپی شد");
   } catch(e) {
-    notify("لطفاً متن را انتخاب و کپی کن");
+    notify("کپی خودکار در این مرورگر فعال نیست");
   }
 }
 
-document.getElementById("copyWallet").addEventListener("click",()=>{
-  copyText(ADMIN_WALLET);
-});
 document.getElementById("copyInvite").addEventListener("click",()=>{
   copyText(document.getElementById("inviteLink").value);
 });
 
 document.getElementById("withdrawButton").addEventListener("click",()=>{
   const message = document.getElementById("withdrawMessage");
+
   if(state.coins<1000) {
     message.textContent = "برای درخواست آزمایشی حداقل ۱۰۰۰ سکه لازم است.";
   } else {
     message.textContent =
       "درخواست فقط نمایشی است؛ هیچ تراکنش واقعی ارسال نشده است.";
   }
+
   notify("برداشت واقعی هنوز فعال نیست");
 });
 
 document.getElementById("connectButton").addEventListener("click",()=>{
-  notify("اتصال واقعی به TonConnect هنوز باید راه‌اندازی شود");
+  notify("اتصال واقعی TonConnect هنوز راه‌اندازی نشده است");
 });
 
 function toggleSound() {
   state.sound = !state.sound;
   save();
 }
+
 document.getElementById("soundButton").addEventListener("click",toggleSound);
 document.getElementById("toggleSound").addEventListener("click",toggleSound);
 
 document.getElementById("saveName").addEventListener("click",()=>{
-  state.name = document.getElementById("playerName").value.trim();
-  save();
-  notify("نام در همین مرورگر ذخیره شد");
+  const name = document.getElementById("playerName").value.trim();
+
+  if(!name) {
+    notify("اول نام خود را وارد کن");
+    return;
+  }
+
+  state.name = name;
+
+  if(!state.nameRewarded) {
+    state.coins += 20;
+    state.nameRewarded = true;
+    save();
+    playSound();
+    notify("نام ذخیره شد؛ ۲۰ سکه پاداش گرفتی");
+  } else {
+    save();
+    notify("نام بازیکن ذخیره شد");
+  }
+});
+
+document.getElementById("profilePhoto").addEventListener("change",event=>{
+  const file = event.target.files && event.target.files[0];
+  if(!file) return;
+
+  if(!file.type.startsWith("image/")) {
+    notify("لطفاً یک فایل تصویری انتخاب کن");
+    event.target.value = "";
+    return;
+  }
+
+  if(file.size>8*1024*1024) {
+    notify("عکس بزرگ است؛ لطفاً عکسی کمتر از ۸ مگابایت انتخاب کن");
+    event.target.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = ()=>{
+    const img = new Image();
+
+    img.onload = ()=>{
+      const scale = Math.min(1,256/Math.max(img.width,img.height));
+      const canvas = document.createElement("canvas");
+
+      canvas.width = Math.max(1,Math.round(img.width*scale));
+      canvas.height = Math.max(1,Math.round(img.height*scale));
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img,0,0,canvas.width,canvas.height);
+
+      try {
+        const imageData = canvas.toDataURL("image/jpeg",0.75);
+        state.pendingProfileImage = imageData;
+        document.getElementById("profilePreview").src = imageData;
+        document.getElementById("profilePreview").style.display = "block";
+        document.getElementById("avatarPlaceholder").style.display = "none";
+        notify("پیش‌نمایش آماده است؛ برای ذخیره روی دکمه بزن");
+      } catch(e) {
+        notify("آماده‌سازی عکس ناموفق بود؛ عکس دیگری انتخاب کن");
+      }
+    };
+
+    img.onerror = ()=>notify("این عکس باز نشد؛ عکس دیگری انتخاب کن");
+    img.src = reader.result;
+  };
+
+  reader.readAsDataURL(file);
+});
+
+document.getElementById("savePhoto").addEventListener("click",()=>{
+  if(!state.pendingProfileImage && !state.profileImage) {
+    notify("اول یک عکس از گالری انتخاب کن");
+    return;
+  }
+
+  if(state.pendingProfileImage) {
+    state.profileImage = state.pendingProfileImage;
+    delete state.pendingProfileImage;
+  }
+
+  if(!state.photoRewarded) {
+    state.coins += 20;
+    state.photoRewarded = true;
+    save();
+    renderProfile();
+    playSound();
+    notify("عکس ذخیره شد؛ ۲۰ سکه پاداش گرفتی");
+  } else {
+    save();
+    renderProfile();
+    notify("عکس پروفایل ذخیره شد");
+  }
+
+  document.getElementById("profilePhoto").value = "";
 });
 
 document.getElementById("resetGame").addEventListener("click",()=>{
-  if(!confirm("تمام پیشرفت آزمایشی پاک شود؟")) return;
+  if(!confirm("تمام پیشرفت آزمایشی، نام و عکس پروفایل پاک شود؟")) return;
+
   state = {...DEFAULT_STATE};
-  save();
+  try {
+    localStorage.removeItem("afgMinerDemo");
+  } catch(e) {}
+
+  renderStats();
   renderMiners();
   renderTasks();
+  renderProfile();
+  renderRewardStatus();
   notify("بازی آزمایشی از نو شروع شد");
 });
 
 renderStats();
 renderMiners();
 renderTasks();
+renderProfile();
+renderRewardStatus();
 </script>
 </body>
 </html>
