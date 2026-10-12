@@ -57,6 +57,177 @@ nav{position:fixed;bottom:0;left:0;right:0;z-index:10;display:flex;justify-conte
 .nav-inner{width:100%;max-width:520px;display:grid;grid-template-columns:repeat(5,1fr)}
 .nav-btn{border:0;background:transparent;color:#9cbaa6;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:10px;padding:6px 1px}.nav-btn span{font-size:21px}.nav-btn.active{color:var(--green)}
 .status{font-size:11px;color:var(--muted);line-height:1.8;overflow-wrap:anywhere}hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+
+/* AFG TON Miner — enhanced visual theme */
+:root {
+  --bg: #082719;
+  --panel: #123b27;
+  --green: #91f2a5;
+  --gold: #ffdc83;
+  --muted: #bad4c0;
+  --line: #3c7650;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 50% 0%, #245c39 0%, transparent 48%),
+    var(--bg);
+}
+
+header {
+  background: linear-gradient(115deg, #0c2c1b, #1c4b30);
+  border-bottom: 1px solid #3b704a;
+  box-shadow: 0 5px 20px #0002;
+}
+
+.brand { color: #a1f7ae; }
+.avatar {
+  border: 2px solid #9bf0a7;
+  box-shadow: 0 0 18px #77e99425;
+}
+
+.balance-pill {
+  background: linear-gradient(135deg, #315a38, #173b27);
+  border-color: #6b965b;
+  box-shadow: 0 3px 12px #0002;
+}
+
+.hero {
+  background:
+    linear-gradient(180deg, #75b980 0%, #427f4d 38%, #173c29 100%);
+  border-color: #70a56c;
+  box-shadow: 0 9px 24px #0003;
+}
+
+.hero h1 {
+  color: #fff;
+  text-shadow: 0 2px 8px #143e25;
+}
+
+.stat, .panel, .miner-card, .task-card, .level-card {
+  background: linear-gradient(145deg, #19482f, #0e3020);
+  border-color: #3b704b;
+  box-shadow: 0 5px 16px #0002;
+}
+
+.stat, .panel, .task-card, .level-card {
+  border-radius: 17px;
+}
+
+.stat .value { color: #f4fff5; }
+
+.miner-art {
+  background:
+    radial-gradient(ellipse at 50% 100%, #4b8d4d 0%, transparent 60%),
+    linear-gradient(145deg, #2c6740, #102f20);
+  min-height: 145px;
+}
+
+.miner-icon {
+  font-size: 64px;
+  filter: drop-shadow(0 5px 5px #0005);
+}
+
+.crystal {
+  filter: drop-shadow(0 0 10px #8cf0a455);
+}
+
+.miner-info { padding: 16px; }
+
+.badge {
+  background: #245638;
+  color: #a3f3ad;
+  border: 1px solid #3d7650;
+}
+
+.progress {
+  height: 9px;
+  background: #092719;
+  border: 1px solid #2d5c3b;
+}
+
+.progress span {
+  background: linear-gradient(90deg, #4ac875, #c0ffa0);
+  box-shadow: 0 0 10px #7be49a55;
+}
+
+.btn {
+  min-height: 43px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #a5f5b0, #69d98a);
+  box-shadow: 0 3px 9px #0002;
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.btn.gold {
+  background: linear-gradient(135deg, #ffe8a2, #e8bd58);
+}
+
+.btn.dark {
+  background: #214b32;
+  border: 1px solid #477454;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(.97);
+}
+
+.level-grid { gap: 12px; }
+
+.level-card {
+  padding: 12px;
+  overflow: hidden;
+}
+
+.level-art {
+  height: 90px;
+  border: 1px solid #477e50;
+  background:
+    radial-gradient(ellipse at 50% 100%, #4b8d4d, transparent 70%),
+    linear-gradient(145deg, #2e6840, #123522);
+}
+
+.task-card { padding: 14px; }
+
+.task-icon, .wallet-symbol {
+  background: linear-gradient(145deg, #3c7d4a, #173d28);
+  border: 1px solid #4d8257;
+}
+
+.input:focus {
+  border-color: #91f2a5;
+  box-shadow: 0 0 0 2px #91f2a51c;
+}
+
+nav {
+  background: #0b291b;
+  border-top: 1px solid #3c7049;
+  box-shadow: 0 -5px 20px #0003;
+}
+
+.nav-btn {
+  min-height: 53px;
+  border-radius: 12px;
+  transition: background .2s ease, color .2s ease;
+}
+
+.nav-btn.active {
+  color: #a1f4ad;
+  background: #19462b;
+}
+
+.note {
+  background: #153b28;
+  border-color: #376849;
+}
+
+@media (max-width: 360px) {
+  main { padding-left: 10px; padding-right: 10px; }
+  .hero h1 { font-size: 21px; }
+  .stat { padding: 11px; }
+  .stat .value { font-size: 17px; }
+}
+
 </style>
 </head>
 <body>
