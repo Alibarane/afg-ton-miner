@@ -138,6 +138,17 @@ nav{position:fixed;z-index:10;bottom:0;left:0;right:0;background:#071b11f5;borde
  <div class="panel center" style="padding:17px">
   <div class="wallet-symbol">💎</div><div class="muted">موجودی سکه‌های بازی</div>
   <div style="font-size:29px;font-weight:900;margin:10px">🪙 <span id="walletCoins">100</span></div>
+  <hr>
+<div class="flex">
+  <span>💎 موجودی توکن AFG</span>
+  <b><span id="tokenBalance">0</span> AFG</b>
+</div>
+<p id="tokenBalanceStatus" class="status">
+  برای دریافت موجودی، دکمه را بزن.
+</p>
+<button class="btn dark" onclick="refreshTokenBalance()">
+  🔄 دریافت موجودی AFG
+</button>
   <div id="tonConnectButton"></div>
   <p id="walletAddress" class="status" dir="ltr">کیف پول هنوز وصل نشده است.</p>
   <button class="btn" id="verifyWalletBtn" onclick="verifyWallet()" disabled>تأیید کیف پول در سرور</button>
@@ -247,6 +258,7 @@ async function api(action='state',taskKey=null){
  let result;try{result=await res.json()}catch{throw new Error('پاسخ سرور JSON معتبر نیست.')}
  if(!res.ok||result.error||result.success===false)throw new Error(result.error||result.message||'SERVER_ERROR');
  const data=result.data||result;
+ if(action==='token_balance') return result; 
  const player=data.player||data.data?.player;
  if(!player)throw new Error('اطلاعات بازیکن در پاسخ سرور موجود نیست.');
  const coins=Number(player.coins),level=Number(player.miner_level??player.level);
@@ -316,7 +328,36 @@ function initTonConnect(){
   });
  }catch(e){console.error(e);txt('walletStatus','راه‌اندازی TON Connect موفق نشد.')}
 }
-async function verifyWallet(){
+
+async function refreshTokenBalance(){
+  const status = document.getElementById('tokenBalanceStatus');
+  const balance = document.getElementById('tokenBalance');
+
+  status.textContent = 'در حال دریافت موجودی از سرور…';
+
+  try {
+    if (!tg?.initData) {
+      throw new Error('مینی‌اپ را از داخل ربات تلگرام باز کن.');
+    }
+
+    const result = await api('token_balance');
+    const account = result.account || {};
+    const amount = Number(account.token_balance);
+
+    if (!Number.isFinite(amount) || amount < 0) {
+      throw new Error('موجودی دریافتی معتبر نیست.');
+    }
+
+    balance.textContent = fmt(amount);
+    status.textContent = 'موجودی ثبت‌شده در سرور دریافت شد.';
+  } catch (error) {
+    console.error('AFG token balance:', error);
+    status.textContent =
+      'دریافت موجودی ناموفق بود. اتصال سرور را بررسی کن.';
+  }
+}
+
+ async function verifyWallet(){
  if(!tonWalletAddress)return alert('ابتدا کیف پول را متصل کن.');
  txt('walletStatus','درخواست تأیید سرور هنوز به پشتیبانی verify_wallet در تابع Supabase نیاز دارد.');
 }
